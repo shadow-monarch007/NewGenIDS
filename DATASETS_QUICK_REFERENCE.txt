@@ -1,0 +1,287 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                  EXTERNAL IDS DATASETS - QUICK REFERENCE                   ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         RECOMMENDED DATASETS                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🥇 BEST FOR YOUR PROJECT: UNSW-NB15
+═══════════════════════════════════
+   Size: 2 GB
+   Link: https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/
+   
+   ✅ Pros:
+      • Modern traffic (2015)
+      • 9 attack categories
+      • 2.5 million samples
+      • Perfect size for training
+      • Widely cited in research
+   
+   📥 Quick Download:
+      .\download_datasets.ps1  (Choose option 2)
+
+
+🥈 MOST POPULAR: CIC-IDS-2017
+═════════════════════════════
+   Size: 3 GB
+   Link: https://www.kaggle.com/datasets/cicdataset/cicids2017
+   
+   ✅ Pros:
+      • Most cited dataset
+      • Matches your 6 attack types!
+      • Week-long traffic capture
+      • Real attack scenarios
+   
+   📥 Quick Download:
+      Visit Kaggle link above, download ZIP, extract to data\cicids2017\
+
+
+🥉 BEST FOR TESTING: NSL-KDD
+════════════════════════════
+   Size: 20 MB (tiny!)
+   Link: https://www.unb.ca/cic/datasets/nsl.html
+   
+   ✅ Pros:
+      • Super fast download
+      • Quick to train
+      • Good for initial testing
+   
+   📥 Quick Download:
+      .\download_datasets.ps1  (Choose option 1)
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          DATASET COMPARISON                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+╔══════════════╦═══════╦══════════╦═══════════════╦═══════════╗
+║   Dataset    ║ Size  ║ Samples  ║ Attack Types  ║ Download  ║
+╠══════════════╬═══════╬══════════╬═══════════════╬═══════════╣
+║ NSL-KDD      ║ 20 MB ║  148K    ║      4        ║  1 min    ║
+║ UNSW-NB15    ║ 2 GB  ║  2.5M    ║      9        ║ 30-60 min ║
+║ CIC-IDS-2017 ║ 3 GB  ║  2.8M    ║      7        ║  1-2 hrs  ║
+║ CIC-IDS-2018 ║ 4 GB  ║  16M     ║      7        ║  2-3 hrs  ║
+║ IoT-23       ║325 GB ║  Varies  ║  IoT Malware  ║  Days     ║
+╚══════════════╩═══════╩══════════╩═══════════════╩═══════════╝
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    ATTACK TYPE COVERAGE                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Your Project's 6 Types:
+   1. Normal
+   2. DDoS
+   3. Port Scan
+   4. Malware C2
+   5. Brute Force
+   6. SQL Injection
+
+Which Dataset Has What?
+────────────────────────
+
+NSL-KDD:
+   ✓ Normal
+   ✓ DoS (similar to DDoS)
+   ✓ Probe (similar to Port Scan)
+   ✓ R2L (Remote to Local attacks)
+   ✓ U2R (User to Root attacks)
+
+UNSW-NB15: ⭐ BEST MATCH!
+   ✓ Normal
+   ✓ DoS (DDoS)
+   ✓ Reconnaissance (Port Scan)
+   ✓ Backdoors + Worms (Malware C2)
+   ✓ Exploits (Brute Force, SQL Injection)
+   + Fuzzers, Analysis, Generic, Shellcode
+
+CIC-IDS-2017: ⭐ PERFECT MATCH!
+   ✓ Normal (Monday traffic)
+   ✓ DDoS (Friday LOIT attack)
+   ✓ Port Scan (Friday afternoon)
+   ✓ Botnet (Friday ARES - similar to Malware C2)
+   ✓ Brute Force (Tuesday FTP/SSH, Thursday Web)
+   ✓ SQL Injection (Thursday web attacks)
+   + DoS, XSS, Heartbleed, Infiltration
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         QUICK START GUIDE                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Option 1: Fast Testing (5 minutes)
+───────────────────────────────────
+   1. Run: .\download_datasets.ps1
+   2. Choose: 1 (NSL-KDD)
+   3. Wait: 1 minute
+   4. Train: python src/train.py --dataset nsl_kdd --epochs 5
+
+
+Option 2: Best for Your Project (1 hour) ⭐ RECOMMENDED
+────────────────────────────────────────────────────────
+   1. Run: .\download_datasets.ps1
+   2. Choose: 2 (UNSW-NB15)
+   3. Wait: 30-60 minutes
+   4. Train: python src/train.py --dataset unsw_nb15 --epochs 10 --use-arnn
+   5. Evaluate: python src/evaluate.py --dataset unsw_nb15
+
+
+Option 3: Most Popular (2 hours)
+─────────────────────────────────
+   1. Visit: https://www.kaggle.com/datasets/cicdataset/cicids2017
+   2. Download ZIP (~3 GB)
+   3. Extract to: data\cicids2017\
+   4. Train: python src/train.py --dataset cicids2017 --epochs 10 --use-arnn
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      DOWNLOAD COMMANDS                                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Automated (Easiest):
+────────────────────
+   .\download_datasets.ps1
+
+Manual Downloads:
+─────────────────
+
+NSL-KDD:
+   wget https://raw.githubusercontent.com/defcom17/NSL_KDD/master/KDDTrain%2B.txt
+   wget https://raw.githubusercontent.com/defcom17/NSL_KDD/master/KDDTest%2B.txt
+
+UNSW-NB15:
+   wget https://cloudstor.aarnet.edu.au/plus/s/2DhnLGDdEECo4ys/download -O UNSW-NB15_1.csv
+   wget https://cloudstor.aarnet.edu.au/plus/s/M63LvYQFjvf9N6V/download -O UNSW-NB15_2.csv
+   wget https://cloudstor.aarnet.edu.au/plus/s/hdAG9wlr6fRzh1O/download -O UNSW_NB15_testing-set.csv
+
+CIC-IDS-2017:
+   Visit: https://www.kaggle.com/datasets/cicdataset/cicids2017
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     AFTER DOWNLOAD: WHAT TO DO                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+1. Verify Files:
+   ──────────────
+   ls data\*\*.csv
+   
+   Should see:
+      data\nsl_kdd\KDDTrain+.txt
+      data\unsw_nb15\UNSW-NB15_1.csv
+      data\cicids2017\Monday-WorkingHours.csv
+
+
+2. Train Model:
+   ────────────
+   python src/train.py --dataset unsw_nb15 --epochs 10 --use-arnn --batch_size 32
+
+
+3. Evaluate:
+   ─────────
+   python src/evaluate.py --dataset unsw_nb15
+
+
+4. Dashboard Demo:
+   ───────────────
+   python src/dashboard.py
+   # Upload the CSV files
+   # Train and evaluate via web interface
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      FOR YOUR DEMO WITH GUIDE                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Recommended Strategy:
+─────────────────────
+
+Primary: Use demo_attacks.csv (your synthetic data)
+   ✅ Shows all 6 attack types clearly
+   ✅ Fast to load and train
+   ✅ Perfect labels
+   ✅ Demonstrates AI explanations
+
+Secondary: Download UNSW-NB15 as backup
+   ✅ Shows real-world validation
+   ✅ Proves model works on real traffic
+   ✅ Impresses guide with 2.5M samples
+
+Talking Point:
+   "Our IDS works on both synthetic test data (4,400 samples) 
+    and real-world network traffic (2.5 million samples from UNSW-NB15).
+    This demonstrates generalization capability!"
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        CITATION INFORMATION                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+NSL-KDD:
+   Tavallaee et al. (2009). A detailed analysis of the KDD CUP 99 data set.
+
+UNSW-NB15:
+   Moustafa & Slay (2015). UNSW-NB15: A comprehensive data set for network 
+   intrusion detection systems.
+
+CIC-IDS-2017:
+   Sharafaldin et al. (2018). Toward generating a new intrusion detection 
+   dataset and intrusion traffic characterization.
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           TROUBLESHOOTING                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Problem: Download fails
+Solution: Try manual download from links above
+
+Problem: Files too large
+Solution: Start with NSL-KDD (only 20 MB)
+
+Problem: Training too slow
+Solution: Use smaller batch_size or fewer samples
+
+Problem: Out of memory
+Solution: Reduce batch_size to 16 or use data subsampling
+
+Problem: Dataset format doesn't match
+Solution: Your data_loader.py should auto-detect format
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         MORE DATASETS                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+If you want more:
+
+CIC-IDS-2018:
+   https://www.unb.ca/cic/datasets/ids-2018.html
+   
+IoT-23 (IoT-specific):
+   https://www.stratosphereips.org/datasets-iot23
+   
+Bot-IoT (IoT botnet):
+   https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/bot_iot.php
+   
+CICDDOS2019 (DDoS-specific):
+   https://www.unb.ca/cic/datasets/ddos-2019.html
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                          FINAL RECOMMENDATION                              ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║                                                                            ║
+║  For your demo tomorrow:                                                   ║
+║    1. Keep using demo_attacks.csv (synthetic)                              ║
+║    2. Download UNSW-NB15 tonight (real data backup)                        ║
+║    3. Train on both, compare results                                       ║
+║    4. Show guide: "Works on synthetic AND real data!"                      ║
+║                                                                            ║
+║  Command to run:                                                           ║
+║    .\download_datasets.ps1  (Choose option 2 - UNSW-NB15)                  ║
+║                                                                            ║
+║  This gives you BEST OF BOTH WORLDS! 🎉                                    ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
