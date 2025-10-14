@@ -65,7 +65,7 @@ def upload_file():
         return jsonify({"error": "No file provided"}), 400
     
     file = request.files['file']
-    if file.filename == '':
+    if file.filename == '' or file.filename is None:
         return jsonify({"error": "No file selected"}), 400
     
     if not file.filename.endswith('.csv'):
@@ -76,7 +76,7 @@ def upload_file():
     dataset_dir = os.path.join(UPLOAD_FOLDER, dataset_name)
     os.makedirs(dataset_dir, exist_ok=True)
     
-    filepath = os.path.join(dataset_dir, file.filename)
+    filepath = os.path.join(dataset_dir, str(file.filename))
     file.save(filepath)
     
     # Quick stats
@@ -101,6 +101,9 @@ def train():
     global current_job
     
     data = request.json
+    if data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+    
     dataset_name = data.get('dataset_name', 'uploaded')
     epochs = int(data.get('epochs', 5))
     batch_size = int(data.get('batch_size', 32))
@@ -212,6 +215,9 @@ def train():
 def evaluate():
     """Run evaluation on test set."""
     data = request.json
+    if data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+    
     dataset_name = data.get('dataset_name', 'uploaded')
     checkpoint_name = data.get('checkpoint', f'best_{dataset_name}.pt')
     batch_size = int(data.get('batch_size', 32))
@@ -302,6 +308,9 @@ def evaluate():
 def explain_intrusion():
     """Generate AI-powered explanation of detected intrusion."""
     data = request.json
+    if data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+    
     intrusion_type = data.get('intrusion_type', 'unknown')
     features = data.get('features', {})
     confidence = data.get('confidence', 0.0)
