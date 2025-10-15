@@ -328,20 +328,32 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
     """
     Generate human-readable explanation of intrusion detection.
     
-    In production, integrate with OpenAI API or local LLM.
-    For now, uses rule-based templates.
+    Analyzes actual feature values to provide dynamic, data-driven explanations.
+    In production, can be enhanced with OpenAI API or local LLM.
     """
     
-    # Rule-based explanations (can be replaced with GPT API call)
+    # Extract actual feature values for dynamic analysis
+    packet_rate = features.get('packet_rate', 0)
+    packet_size = features.get('packet_size', 0)
+    byte_rate = features.get('byte_rate', 0)
+    flow_duration = features.get('flow_duration', 0)
+    entropy = features.get('entropy', 0)
+    src_port = features.get('src_port', 0)
+    dst_port = features.get('dst_port', 0)
+    total_packets = features.get('total_packets', 0)
+    
+    # Base explanations (templates with dynamic data injection)
+    # Base explanations (templates with dynamic data injection)
     explanations = {
         "DDoS": {
-            "description": "Distributed Denial of Service attack detected. Multiple sources flooding the network with traffic to overwhelm resources.",
+            "description": f"Distributed Denial of Service attack detected. Multiple sources flooding the network with {packet_rate:.0f} packets/sec to overwhelm resources.",
             "indicators": [
-                "🔴 Abnormally high packet rate (>500 packets/sec)",
-                "🔴 Multiple source IPs targeting single destination port (typically 80/443)",
-                "🔴 Small packet sizes (~64 bytes - SYN flood pattern)",
-                "🔴 Repetitive packet patterns with low entropy",
-                "🔴 Incomplete TCP handshakes (SYN without ACK)"
+                f"🔴 Abnormally high packet rate: {packet_rate:.0f} packets/sec (normal: <100 pps)",
+                f"🔴 Target destination port: {int(dst_port)} (typical web service)",
+                f"🔴 Small packet sizes: {packet_size:.0f} bytes (SYN flood pattern)",
+                f"🔴 Low entropy: {entropy:.2f} (repetitive patterns)",
+                f"🔴 Total packets in flow: {int(total_packets)} (flood indicator)",
+                f"🔴 Byte rate: {byte_rate:.0f} bytes/sec"
             ],
             "mitigation": [
                 "🛡️ Enable rate limiting on firewall (e.g., iptables limit module)",
@@ -350,17 +362,18 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
                 "📈 Scale infrastructure horizontally to handle traffic spike",
                 "🔄 Enable SYN cookies to mitigate SYN flood attacks"
             ],
-            "severity": "Critical",
+            "severity": "Critical" if packet_rate > 500 else "High",
             "attack_stage": "Active Attack - Immediate Action Required"
         },
         "Port_Scan": {
-            "description": "Reconnaissance activity detected. Attacker systematically probing network to identify open ports and services (pre-attack phase).",
+            "description": f"Reconnaissance activity detected. Attacker probing port {int(dst_port)} among others (pre-attack phase).",
             "indicators": [
-                "🟡 Sequential port access attempts (ports 1-65535)",
-                "🟡 Connection attempts to multiple closed ports (RST responses)",
-                "🟡 Rapid connection/disconnection patterns (<0.1s per port)",
-                "🟡 Small packet sizes (~60 bytes - SYN probes)",
-                "🟡 Single source IP targeting multiple destination ports"
+                f"🟡 Sequential/multiple port access attempts detected",
+                f"🟡 Target port: {int(dst_port)}",
+                f"🟡 Rapid connection patterns: {flow_duration:.3f}s per attempt",
+                f"🟡 Small packet sizes: {packet_size:.0f} bytes (SYN probes)",
+                f"🟡 Low entropy: {entropy:.2f} (automated scanning)",
+                f"🟡 Packet rate: {packet_rate:.0f} pps (scanning speed)"
             ],
             "mitigation": [
                 "👁️ Enable port scan detection on IDS/IPS (e.g., Snort, Suricata)",
@@ -373,13 +386,14 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
             "attack_stage": "Reconnaissance - Attacker Gathering Information"
         },
         "Port Scan": {  # Alternative name
-            "description": "Reconnaissance activity detected. Attacker systematically probing network to identify open ports and services (pre-attack phase).",
+            "description": f"Reconnaissance activity detected. Attacker probing port {int(dst_port)} among others (pre-attack phase).",
             "indicators": [
-                "🟡 Sequential port access attempts (ports 1-65535)",
-                "🟡 Connection attempts to multiple closed ports (RST responses)",
-                "🟡 Rapid connection/disconnection patterns (<0.1s per port)",
-                "🟡 Small packet sizes (~60 bytes - SYN probes)",
-                "🟡 Single source IP targeting multiple destination ports"
+                f"🟡 Sequential/multiple port access attempts detected",
+                f"🟡 Target port: {int(dst_port)}",
+                f"🟡 Rapid connection patterns: {flow_duration:.3f}s per attempt",
+                f"🟡 Small packet sizes: {packet_size:.0f} bytes (SYN probes)",
+                f"🟡 Low entropy: {entropy:.2f} (automated scanning)",
+                f"🟡 Packet rate: {packet_rate:.0f} pps (scanning speed)"
             ],
             "mitigation": [
                 "👁️ Enable port scan detection on IDS/IPS (e.g., Snort, Suricata)",
@@ -392,18 +406,19 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
             "attack_stage": "Reconnaissance - Attacker Gathering Information"
         },
         "Malware_C2": {
-            "description": "Command & Control communication detected. Compromised device communicating with external attacker server (active breach).",
+            "description": f"Command & Control communication detected. Compromised device beaconing to external server every ~{flow_duration:.0f}s (active breach).",
             "indicators": [
-                "🔴 Unusual outbound connections to unknown servers",
-                "🔴 Periodic beaconing patterns (every ~60 seconds)",
-                "🔴 Encrypted traffic to suspicious domains/IPs",
-                "🔴 High entropy data (encrypted payloads)",
-                "🔴 Persistent PSH+ACK flags (data transmission)"
+                f"🔴 Unusual outbound connection to port: {int(dst_port)}",
+                f"🔴 Periodic beaconing pattern: every ~{flow_duration:.1f} seconds",
+                f"🔴 High entropy traffic: {entropy:.2f} (likely encrypted)",
+                f"🔴 Packet rate: {packet_rate:.0f} pps (C2 communication)",
+                f"🔴 Byte rate: {byte_rate:.0f} bytes/sec (data exfiltration?)",
+                f"🔴 Total packets: {int(total_packets)} (sustained connection)"
             ],
             "mitigation": [
                 "⚠️ ISOLATE affected device immediately from network",
                 "🦠 Run comprehensive antivirus/malware scan (offline if possible)",
-                "🚫 Block C2 server IPs/domains at firewall and DNS level",
+                f"🚫 Block destination port {int(dst_port)} at firewall and DNS level",
                 "🔍 Perform forensic analysis - identify infection vector",
                 "💾 Back up critical data, then reimage system from clean OS",
                 "📧 Report to CERT/security team for incident response"
@@ -412,18 +427,19 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
             "attack_stage": "Active Breach - Device Compromised"
         },
         "Malware C2": {  # Alternative name
-            "description": "Command & Control communication detected. Compromised device communicating with external attacker server (active breach).",
+            "description": f"Command & Control communication detected. Compromised device beaconing to external server every ~{flow_duration:.0f}s (active breach).",
             "indicators": [
-                "🔴 Unusual outbound connections to unknown servers",
-                "🔴 Periodic beaconing patterns (every ~60 seconds)",
-                "🔴 Encrypted traffic to suspicious domains/IPs",
-                "🔴 High entropy data (encrypted payloads)",
-                "🔴 Persistent PSH+ACK flags (data transmission)"
+                f"🔴 Unusual outbound connection to port: {int(dst_port)}",
+                f"🔴 Periodic beaconing pattern: every ~{flow_duration:.1f} seconds",
+                f"🔴 High entropy traffic: {entropy:.2f} (likely encrypted)",
+                f"🔴 Packet rate: {packet_rate:.0f} pps (C2 communication)",
+                f"🔴 Byte rate: {byte_rate:.0f} bytes/sec (data exfiltration?)",
+                f"🔴 Total packets: {int(total_packets)} (sustained connection)"
             ],
             "mitigation": [
                 "⚠️ ISOLATE affected device immediately from network",
                 "🦠 Run comprehensive antivirus/malware scan (offline if possible)",
-                "🚫 Block C2 server IPs/domains at firewall and DNS level",
+                f"🚫 Block destination port {int(dst_port)} at firewall and DNS level",
                 "🔍 Perform forensic analysis - identify infection vector",
                 "💾 Back up critical data, then reimage system from clean OS",
                 "📧 Report to CERT/security team for incident response"
@@ -432,53 +448,56 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
             "attack_stage": "Active Breach - Device Compromised"
         },
         "Brute_Force": {
-            "description": "Brute force authentication attack detected. Attacker attempting to guess credentials through repeated login attempts.",
+            "description": f"Brute force authentication attack detected on port {int(dst_port)}. Repeated login attempts to guess credentials.",
             "indicators": [
-                "🟠 Repeated failed authentication attempts from same source",
-                "🟠 Targeting authentication services (SSH:22, RDP:3389, FTP:21)",
-                "🟠 High connection termination rate (FIN/RST flags)",
-                "🟠 Moderate packet rate (~30 packets/sec)",
-                "🟠 Short connection durations (~2 seconds per attempt)"
+                f"🟠 Target authentication port: {int(dst_port)} (SSH:22, RDP:3389, FTP:21)",
+                f"🟠 Attack rate: {packet_rate:.0f} attempts/second",
+                f"🟠 Short connection duration: {flow_duration:.2f}s per attempt",
+                f"🟠 Packet size: {packet_size:.0f} bytes (auth packets)",
+                f"🟠 Total failed attempts: {int(total_packets)} packets",
+                f"🟠 Low entropy: {entropy:.2f} (automated tool)"
             ],
             "mitigation": [
                 "🔑 Enforce strong password policies (length, complexity, rotation)",
                 "🚪 Implement account lockout after N failed attempts",
                 "🔐 Enable multi-factor authentication (MFA) on all services",
                 "🚨 Deploy fail2ban/sshguard to auto-block brute forcers",
-                "📍 Restrict authentication services to specific IP ranges (VPN)",
+                f"📍 Restrict port {int(dst_port)} access to specific IP ranges (VPN)",
                 "🔒 Consider certificate-based auth instead of passwords"
             ],
-            "severity": "High",
+            "severity": "High" if packet_rate > 20 else "Medium",
             "attack_stage": "Active Attack - Credential Compromise Attempt"
         },
         "Brute Force": {  # Alternative name
-            "description": "Brute force authentication attack detected. Attacker attempting to guess credentials through repeated login attempts.",
+            "description": f"Brute force authentication attack detected on port {int(dst_port)}. Repeated login attempts to guess credentials.",
             "indicators": [
-                "🟠 Repeated failed authentication attempts from same source",
-                "🟠 Targeting authentication services (SSH:22, RDP:3389, FTP:21)",
-                "🟠 High connection termination rate (FIN/RST flags)",
-                "🟠 Moderate packet rate (~30 packets/sec)",
-                "🟠 Short connection durations (~2 seconds per attempt)"
+                f"🟠 Target authentication port: {int(dst_port)} (SSH:22, RDP:3389, FTP:21)",
+                f"🟠 Attack rate: {packet_rate:.0f} attempts/second",
+                f"🟠 Short connection duration: {flow_duration:.2f}s per attempt",
+                f"🟠 Packet size: {packet_size:.0f} bytes (auth packets)",
+                f"🟠 Total failed attempts: {int(total_packets)} packets",
+                f"🟠 Low entropy: {entropy:.2f} (automated tool)"
             ],
             "mitigation": [
                 "🔑 Enforce strong password policies (length, complexity, rotation)",
                 "🚪 Implement account lockout after N failed attempts",
                 "🔐 Enable multi-factor authentication (MFA) on all services",
                 "🚨 Deploy fail2ban/sshguard to auto-block brute forcers",
-                "📍 Restrict authentication services to specific IP ranges (VPN)",
+                f"📍 Restrict port {int(dst_port)} access to specific IP ranges (VPN)",
                 "🔒 Consider certificate-based auth instead of passwords"
             ],
-            "severity": "High",
+            "severity": "High" if packet_rate > 20 else "Medium",
             "attack_stage": "Active Attack - Credential Compromise Attempt"
         },
         "SQL_Injection": {
-            "description": "SQL injection attack detected. Attacker attempting to manipulate database queries through malicious input.",
+            "description": f"SQL injection attack detected. Web application on port {int(dst_port)} targeted with malicious database queries.",
             "indicators": [
-                "🟠 Abnormally large HTTP request sizes (>800 bytes)",
-                "🟠 Suspicious patterns in web traffic (quotes, semicolons, SQL keywords)",
-                "🟠 Targeting web application ports (80, 443, 8080)",
-                "🟠 Multiple requests to same endpoint with varying payloads",
-                "🟠 Unusual character encoding or URL-encoded SQL syntax"
+                f"🟠 Large HTTP request sizes: {packet_size:.0f} bytes (injection payload)",
+                f"🟠 Target web port: {int(dst_port)} (HTTP/HTTPS)",
+                f"🟠 High byte rate: {byte_rate:.0f} bytes/sec (attack traffic)",
+                f"🟠 Attack pattern rate: {packet_rate:.0f} requests/sec",
+                f"🟠 Entropy level: {entropy:.2f} (encoded SQL syntax)",
+                f"🟠 Total attack requests: {int(total_packets)}"
             ],
             "mitigation": [
                 "💉 Use parameterized queries/prepared statements (NEVER string concatenation)",
@@ -488,17 +507,18 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
                 "🔍 Enable database query logging and monitoring",
                 "🔄 Update and patch web application frameworks regularly"
             ],
-            "severity": "High",
+            "severity": "High" if byte_rate > 5000 else "Medium",
             "attack_stage": "Active Attack - Database Compromise Attempt"
         },
         "SQL Injection": {  # Alternative name
-            "description": "SQL injection attack detected. Attacker attempting to manipulate database queries through malicious input.",
+            "description": f"SQL injection attack detected. Web application on port {int(dst_port)} targeted with malicious database queries.",
             "indicators": [
-                "🟠 Abnormally large HTTP request sizes (>800 bytes)",
-                "🟠 Suspicious patterns in web traffic (quotes, semicolons, SQL keywords)",
-                "🟠 Targeting web application ports (80, 443, 8080)",
-                "🟠 Multiple requests to same endpoint with varying payloads",
-                "🟠 Unusual character encoding or URL-encoded SQL syntax"
+                f"🟠 Large HTTP request sizes: {packet_size:.0f} bytes (injection payload)",
+                f"🟠 Target web port: {int(dst_port)} (HTTP/HTTPS)",
+                f"🟠 High byte rate: {byte_rate:.0f} bytes/sec (attack traffic)",
+                f"🟠 Attack pattern rate: {packet_rate:.0f} requests/sec",
+                f"🟠 Entropy level: {entropy:.2f} (encoded SQL syntax)",
+                f"🟠 Total attack requests: {int(total_packets)}"
             ],
             "mitigation": [
                 "💉 Use parameterized queries/prepared statements (NEVER string concatenation)",
@@ -508,17 +528,18 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
                 "🔍 Enable database query logging and monitoring",
                 "🔄 Update and patch web application frameworks regularly"
             ],
-            "severity": "High",
+            "severity": "High" if byte_rate > 5000 else "Medium",
             "attack_stage": "Active Attack - Database Compromise Attempt"
         },
         "Normal": {
-            "description": "Normal network traffic detected. No malicious activity identified.",
+            "description": f"Normal network traffic detected on port {int(dst_port)}. No malicious activity identified.",
             "indicators": [
-                "✅ Standard packet rates within normal range",
-                "✅ Complete TCP handshakes (SYN-SYN/ACK-ACK)",
-                "✅ Typical packet sizes for service type",
-                "✅ Established connections with proper termination",
-                "✅ Expected entropy levels for data type"
+                f"✅ Standard packet rate: {packet_rate:.0f} pps (within normal range)",
+                f"✅ Typical packet size: {packet_size:.0f} bytes for service type",
+                f"✅ Flow duration: {flow_duration:.2f}s (expected for connection type)",
+                f"✅ Normal entropy: {entropy:.2f} (unencrypted or standard encryption)",
+                f"✅ Byte rate: {byte_rate:.0f} bytes/sec (benign traffic volume)",
+                f"✅ Port {int(dst_port)}: Common service port"
             ],
             "mitigation": [
                 "✅ No action required - traffic is benign",
@@ -530,10 +551,13 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
             "attack_stage": "No Attack - Normal Operations"
         },
         "unknown": {
-            "description": "Anomalous network behavior detected. Pattern deviates from normal baseline but doesn't match known attack signatures.",
+            "description": f"Anomalous network behavior detected on port {int(dst_port)}. Pattern deviates from normal baseline.",
             "indicators": [
                 f"⚠️ Model confidence: {confidence:.1%}",
-                "⚠️ Multiple feature anomalies detected",
+                f"⚠️ Packet rate: {packet_rate:.0f} pps (unusual pattern)",
+                f"⚠️ Packet size: {packet_size:.0f} bytes (anomalous)",
+                f"⚠️ Entropy: {entropy:.2f} (unexpected for traffic type)",
+                f"⚠️ Flow duration: {flow_duration:.2f}s",
                 "⚠️ Pattern not matching known attack profiles",
                 "⚠️ May indicate zero-day attack or misconfiguration"
             ],
