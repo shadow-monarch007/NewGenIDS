@@ -11,7 +11,7 @@ if (!(Test-Path $dataDir)) {
 }
 
 # Function to download file
-function Download-Dataset {
+function Get-Dataset {
     param (
         [string]$Url,
         [string]$OutputPath,
@@ -51,12 +51,12 @@ switch ($choice) {
         $nslDir = "$dataDir\nsl_kdd"
         New-Item -ItemType Directory -Path $nslDir -Force | Out-Null
         
-        Download-Dataset `
+        Get-Dataset `
             -Url "https://raw.githubusercontent.com/defcom17/NSL_KDD/master/KDDTrain%2B.txt" `
             -OutputPath "$nslDir\KDDTrain+.txt" `
             -DatasetName "NSL-KDD Training"
         
-        Download-Dataset `
+        Get-Dataset `
             -Url "https://raw.githubusercontent.com/defcom17/NSL_KDD/master/KDDTest%2B.txt" `
             -OutputPath "$nslDir\KDDTest+.txt" `
             -DatasetName "NSL-KDD Testing"
@@ -69,17 +69,17 @@ switch ($choice) {
         
         Write-Host "`n⚠️  UNSW-NB15 is large (~2GB). This may take a while..." -ForegroundColor Yellow
         
-        Download-Dataset `
+        Get-Dataset `
             -Url "https://cloudstor.aarnet.edu.au/plus/s/2DhnLGDdEECo4ys/download" `
             -OutputPath "$unswDir\UNSW-NB15_1.csv" `
             -DatasetName "UNSW-NB15 Part 1"
         
-        Download-Dataset `
+        Get-Dataset `
             -Url "https://cloudstor.aarnet.edu.au/plus/s/M63LvYQFjvf9N6V/download" `
             -OutputPath "$unswDir\UNSW-NB15_2.csv" `
             -DatasetName "UNSW-NB15 Part 2"
         
-        Download-Dataset `
+        Get-Dataset `
             -Url "https://cloudstor.aarnet.edu.au/plus/s/hdAG9wlr6fRzh1O/download" `
             -OutputPath "$unswDir\UNSW_NB15_testing-set.csv" `
             -DatasetName "UNSW-NB15 Test Set"

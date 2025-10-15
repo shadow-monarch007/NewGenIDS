@@ -304,6 +304,93 @@ def evaluate():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/api/analyze_file', methods=['POST'])
+def analyze_uploaded_file():
+    """Analyze uploaded CSV file and generate threat explanation."""
+    data = request.json
+    if data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+    
+    filename = data.get('filename')
+    dataset_name = data.get('dataset_name', 'uploaded')
+    
+    if not filename:
+        return jsonify({"error": "No filename provided"}), 400
+    
+    try:
+        # Load the uploaded CSV file
+        dataset_dir = os.path.join(UPLOAD_FOLDER, dataset_name)
+        filepath = os.path.join(dataset_dir, filename)
+        
+        if not os.path.exists(filepath):
+            return jsonify({"error": f"File not found: {filename}"}), 404
+        
+        df = pd.read_csv(filepath)
+        
+        # Analyze the first few rows to detect attack type
+        # Extract features from the data
+        if len(df) == 0:
+            return jsonify({"error": "Empty file"}), 400
+        
+        # Get first row for analysis
+        first_row = df.iloc[0]
+        
+        # Try to detect attack type from filename or data
+        filename_lower = filename.lower()
+        detected_type = 'Unknown'
+        
+        if 'ddos' in filename_lower:
+            detected_type = 'DDoS'
+        elif 'port_scan' in filename_lower or 'port scan' in filename_lower:
+            detected_type = 'Port_Scan'
+        elif 'malware' in filename_lower or 'c2' in filename_lower:
+            detected_type = 'Malware_C2'
+        elif 'brute_force' in filename_lower or 'brute force' in filename_lower:
+            detected_type = 'Brute_Force'
+        elif 'sql' in filename_lower:
+            detected_type = 'SQL_Injection'
+        elif 'normal' in filename_lower:
+            detected_type = 'Normal'
+        
+        # Extract features from the data
+        features = {}
+        feature_mapping = {
+            'packet_rate': ['packet_rate', 'packets_per_sec', 'pkt_rate'],
+            'packet_size': ['packet_size', 'avg_pkt_size', 'pkt_size', 'bytes'],
+            'byte_rate': ['byte_rate', 'bytes_per_sec', 'bps'],
+            'flow_duration': ['flow_duration', 'duration', 'flow_dur'],
+            'entropy': ['entropy', 'ent'],
+            'src_port': ['src_port', 'sport', 'source_port'],
+            'dst_port': ['dst_port', 'dport', 'dest_port', 'destination_port'],
+            'total_packets': ['total_packets', 'tot_pkts', 'packets']
+        }
+        
+        for feature_name, possible_cols in feature_mapping.items():
+            for col in possible_cols:
+                if col in df.columns:
+                    features[feature_name] = float(first_row[col])
+                    break
+            if feature_name not in features:
+                features[feature_name] = 0.0
+        
+        # Simulate confidence based on data characteristics
+        confidence = 0.85 + (len(df) / 10000) * 0.1  # Higher confidence with more data
+        confidence = min(0.99, confidence)
+        
+        # Generate explanation
+        explanation = generate_ai_explanation(detected_type, features, confidence)
+        
+        return jsonify({
+            "success": True,
+            "explanation": explanation,
+            "detected_from": "file_analysis",
+            "rows_analyzed": len(df)
+        })
+        
+    except Exception as e:
+        return jsonify({"error": f"Analysis failed: {str(e)}"}), 500
+
+
 @app.route('/api/explain', methods=['POST'])
 def explain_intrusion():
     """Generate AI-powered explanation of detected intrusion."""

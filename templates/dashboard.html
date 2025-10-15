@@ -398,6 +398,12 @@
                 const data = await response.json();
                 
                 if (data.success) {
+                    // Store uploaded file info for threat analysis
+                    lastUploadedFile = {
+                        filename: data.stats.filename,
+                        dataset_name: data.stats.dataset_name
+                    };
+                    
                     showAlert('uploadAlert', `✓ File uploaded successfully: ${file.name}`, 'success');
                     displayFileStats(data.stats);
                     document.getElementById('trainBtn').disabled = false;
@@ -509,14 +515,29 @@
         }
         
         // Get AI explanation
+        // Store last uploaded file info for analysis
+        let lastUploadedFile = null;
+        
         async function getExplanation() {
+            // Validate that a file has been uploaded
+            if (!lastUploadedFile) {
+                alert('⚠️ Please upload a network traffic CSV file first before generating threat analysis.');
+                return;
+            }
+            
             try {
-                const response = await fetch('/api/explain', {
+                // Note: In a complete implementation, this should get data from actual model predictions
+                // For now, we analyze the uploaded CSV file directly
+                const analysisBtn = event.target;
+                analysisBtn.disabled = true;
+                analysisBtn.textContent = '🔄 Analyzing uploaded data...';
+                
+                const response = await fetch('/api/analyze_file', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        intrusion_type: 'DDoS',  // Example
-                        confidence: 0.92
+                        filename: lastUploadedFile.filename,
+                        dataset_name: lastUploadedFile.dataset_name
                     })
                 });
                 
@@ -524,9 +545,16 @@
                 
                 if (data.success) {
                     displayExplanation(data.explanation);
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to analyze file'));
                 }
+                
+                analysisBtn.disabled = false;
+                analysisBtn.textContent = '🔍 Generate Threat Analysis';
             } catch (error) {
                 alert('Error: ' + error.message);
+                event.target.disabled = false;
+                event.target.textContent = '🔍 Generate Threat Analysis';
             }
         }
         
