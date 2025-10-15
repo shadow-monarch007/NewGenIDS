@@ -1,0 +1,6 @@
+timestamp,src_port,dst_port,protocol,packet_size,packet_rate,byte_rate,flow_duration,total_packets,total_bytes,tcp_flags_syn,tcp_flags_ack,tcp_flags_fin,tcp_flags_rst,tcp_flags_psh,icmp_type,connection_state,service,entropy,label,attack_type
+2024-10-14 20:10:33,54123,3306,6,1024.67,34.56,35412.89,4.8923,169.12,173245.67,0,1,0,0,1,0,1,99,6.95,1,SQL_Injection
+2024-10-14 20:10:38,54124,3306,6,1026.34,34.23,35134.56,4.9012,168.78,172234.89,0,1,0,0,1,0,1,99,6.98,1,SQL_Injection
+2024-10-14 20:10:43,54125,3306,6,1023.89,34.78,35621.23,4.8867,169.45,173987.45,0,1,0,0,1,0,1,99,6.92,1,SQL_Injection
+2024-10-14 20:10:48,54126,3306,6,1025.12,34.45,35298.67,4.8956,169.01,172876.34,0,1,0,0,1,0,1,99,6.96,1,SQL_Injection
+2024-10-14 20:10:53,54127,3306,6,1024.56,34.67,35487.92,4.8889,169.34,173456.78,0,1,0,0,1,0,1,99,6.94,1,SQL_Injection

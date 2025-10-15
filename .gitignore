@@ -59,8 +59,10 @@ logs/*.log
 
 # Data directories (large datasets)
 data/*/
+!data/iot23/
 !data/iot23/demo_attacks.csv
 !data/iot23/demo_samples/
+!data/iot23/demo_samples/*.csv
 !data/.gitkeep
 
 # Uploads directory
