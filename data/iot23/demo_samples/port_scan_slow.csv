@@ -1,0 +1,6 @@
+timestamp,src_port,dst_port,protocol,packet_size,packet_rate,byte_rate,flow_duration,total_packets,total_bytes,tcp_flags_syn,tcp_flags_ack,tcp_flags_fin,tcp_flags_rst,tcp_flags_psh,icmp_type,connection_state,service,entropy,label,attack_type
+2024-10-14 14:35:22,45678,22,6,89.23,142.34,12698.45,0.0523,7.43,648.92,1,0,0,1,0,0,0,99,4.12,1,Port_Scan
+2024-10-14 14:35:23,45679,23,6,88.67,143.12,12687.34,0.0518,7.41,647.23,1,0,0,1,0,0,0,99,4.15,1,Port_Scan
+2024-10-14 14:35:24,45680,25,6,90.15,141.89,12793.56,0.0527,7.48,651.45,1,0,0,1,0,0,0,99,4.09,1,Port_Scan
+2024-10-14 14:35:25,45681,80,6,89.78,142.67,12812.34,0.0521,7.44,649.87,1,0,0,1,0,0,0,99,4.13,1,Port_Scan
+2024-10-14 14:35:26,45682,110,6,88.92,143.45,12756.89,0.0524,7.52,654.32,1,0,0,1,0,0,0,99,4.11,1,Port_Scan
