@@ -155,7 +155,7 @@ def analyze_traffic():
                 "confidence": pred["confidence"],
                 "features": pred["features"],
                 "timestamp": pred["timestamp"],
-                "status": "Active" if pred["attack_type"] != "Normal" else "False_positive",
+                "status": "Active" if pred["attack_type"] != "Normal" else "False Positive",
                 "source": "File Upload",
                 "filename": file.filename
             })
