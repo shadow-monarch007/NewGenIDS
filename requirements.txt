@@ -10,3 +10,4 @@ tensorboard>=2.16.0
 flask>=3.0.0
 cryptography>=42.0.0
 scapy>=2.6.1
+requests>=2.32.0

@@ -963,9 +963,28 @@
         // Initialize
         initCharts();
         loadDashboard();
-        
-        // Auto-refresh every 30 seconds
+
+        // Auto-refresh as a fallback every 30 seconds
         setInterval(loadDashboard, 30000);
+
+        // Live updates via SSE (if server provides /events)
+        try {
+            const es = new EventSource('/events');
+            es.onmessage = (ev) => {
+                try {
+                    const alert = JSON.parse(ev.data);
+                    // Refresh dashboard quickly when a live alert arrives
+                    loadDashboard();
+                } catch (e) {
+                    console.warn('SSE parse error:', e);
+                }
+            };
+            es.onerror = (e) => {
+                console.warn('SSE connection error', e);
+            };
+        } catch (e) {
+            console.warn('SSE not available:', e);
+        }
     </script>
 </body>
 </html>

@@ -12,7 +12,8 @@ import sys
 import json
 import tempfile
 from datetime import datetime
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Response, stream_with_context
+import queue
 import pandas as pd
 
 # Add parent directory to path for imports
@@ -37,6 +38,17 @@ os.makedirs(DATA_FOLDER, exist_ok=True)
 
 # Initialize threat database
 threat_db = ThreatDatabase(os.path.join(DATA_FOLDER, 'threats.json'))
+
+# SSE state
+_clients: list[queue.Queue] = []
+
+def _broadcast_alert(alert: dict):
+    # Push to all connected clients
+    for q in list(_clients):
+        try:
+            q.put_nowait(alert)
+        except Exception:
+            pass
 
 
 @app.route('/')
@@ -66,6 +78,27 @@ def get_timeline():
     days = int(request.args.get('days', 7))
     timeline = threat_db.get_timeline_data(days)
     return jsonify(timeline)
+
+
+@app.route('/events')
+def sse_events():
+    """Server-Sent Events stream for live alerts."""
+    def gen():
+        q = queue.Queue()
+        _clients.append(q)
+        try:
+            while True:
+                alert = q.get()
+                yield f"data: {json.dumps(alert)}\n\n"
+        except GeneratorExit:
+            pass
+        finally:
+            try:
+                _clients.remove(q)
+            except ValueError:
+                pass
+
+    return Response(stream_with_context(gen()), mimetype='text/event-stream')
 
 
 @app.route('/api/analyze_traffic', methods=['POST'])
@@ -190,6 +223,33 @@ def analyze_traffic():
             "success": False,
             "error": f"Analysis failed: {str(e)}"
         }), 500
+
+
+@app.route('/api/dashboard/ingest', methods=['POST'])
+def ingest_alert():
+    """Receive alert JSON from realtime agent; store and broadcast."""
+    try:
+        alert = request.get_json(force=True)
+        if not isinstance(alert, dict):
+            return jsonify({"error": "Invalid alert payload"}), 400
+
+        # Normalize and store
+        threat_db.add_threat({
+            "attack_type": alert.get("attack_type", "Unknown"),
+            "severity": alert.get("severity", "Unknown"),
+            "confidence": float(alert.get("confidence", 0.0)),
+            "features": alert.get("features", {}),
+            "timestamp": alert.get("timestamp") or datetime.now().isoformat(),
+            "status": "Active" if alert.get("attack_type") != "Normal" else "False Positive",
+            "source": "Realtime Capture"
+        })
+
+        # Broadcast via SSE
+        _broadcast_alert(alert)
+
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route('/api/threat/<int:threat_id>', methods=['GET'])
