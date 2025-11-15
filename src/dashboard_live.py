@@ -11,6 +11,7 @@ import os
 import sys
 import json
 import tempfile
+import hashlib
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify, Response, stream_with_context
 import queue
@@ -21,6 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.predict import predict_traffic, get_severity, extract_key_features, ATTACK_TYPES
 from src.threat_db import ThreatDatabase
+from src.blockchain_logger import BlockchainLogger
 from src.dashboard import generate_ai_explanation  # Reuse explanation function
 from src.pcap_converter import PCAPConverter
 
@@ -31,7 +33,9 @@ app = Flask(__name__,
 # Configuration
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads')
 DATA_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
-CHECKPOINT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'checkpoints', 'best_iot23.pt')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+CHECKPOINT_PATH = os.path.join(BASE_DIR, 'checkpoints', 'best_iot23.pt')
+RESULTS_FOLDER = os.path.join(BASE_DIR, 'results')
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(DATA_FOLDER, exist_ok=True)
@@ -248,6 +252,30 @@ def ingest_alert():
         _broadcast_alert(alert)
 
         return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/blockchain/verify', methods=['GET'])
+def verify_blockchain():
+    """Verify integrity of alerts blockchain and return summary."""
+    chain_path = os.path.join(RESULTS_FOLDER, 'alerts_chain.json')
+    if not os.path.exists(chain_path):
+        return jsonify({"error": "alerts_chain.json not found", "exists": False}), 404
+    try:
+        logger = BlockchainLogger(chain_path)
+        with open(chain_path, 'r') as f:
+            chain = json.load(f)
+        valid = logger.verify_chain()
+        length = len(chain)
+        last = chain[-1] if chain else {}
+        return jsonify({
+            "valid": valid,
+            "length": length,
+            "last_hash": last.get('hash'),
+            "last_index": last.get('index'),
+            "exists": True
+        })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

@@ -579,6 +579,9 @@
 <body>
     <div class="header">
         <h1>🛡️ Security Dashboard</h1>
+        <div style="position:absolute; top:20px; right:24px; display:flex; gap:12px;">
+            <button id="verify-chain-btn" class="view-btn" style="font-size:12px; padding:8px 14px;">Verify Chain</button>
+        </div>
     </div>
     
     <div class="stats-grid">
@@ -696,6 +699,20 @@
     </div>
     
     <script>
+        // Toast system
+        const toastContainer = document.createElement('div');
+        toastContainer.className = 'toast-container';
+        document.body.appendChild(toastContainer);
+        function showToast(msg, type='info') {
+            const t = document.createElement('div');
+            t.className = 'toast toast-' + type;
+            t.textContent = msg;
+            toastContainer.appendChild(t);
+            setTimeout(()=>{ t.classList.add('visible'); }, 50);
+            setTimeout(()=>{ t.classList.remove('visible'); }, 4500);
+            setTimeout(()=>{ toastContainer.removeChild(t); }, 5000);
+        }
+
         let severityChart, statusChart, timelineChart;
         
         // Initialize charts
@@ -975,6 +992,8 @@
                     const alert = JSON.parse(ev.data);
                     // Refresh dashboard quickly when a live alert arrives
                     loadDashboard();
+                    const sev = (alert.severity || 'Info').toLowerCase();
+                    showToast(`Alert: ${alert.attack_type} (${alert.severity}, conf=${(alert.confidence*100||0).toFixed(1)}%)`, sev === 'critical' ? 'error' : (sev === 'high' ? 'warn' : 'info'));
                 } catch (e) {
                     console.warn('SSE parse error:', e);
                 }
@@ -985,6 +1004,31 @@
         } catch (e) {
             console.warn('SSE not available:', e);
         }
+
+        // Verify blockchain button
+        document.getElementById('verify-chain-btn').addEventListener('click', async () => {
+            try {
+                const r = await fetch('/api/blockchain/verify');
+                const j = await r.json();
+                if (j.valid) {
+                    showToast(`Chain OK (blocks=${j.length}, last=${j.last_index})`, 'info');
+                } else if (j.exists) {
+                    showToast('Chain INVALID!', 'error');
+                } else {
+                    showToast('Chain file missing', 'warn');
+                }
+            } catch (e) {
+                showToast('Verify failed: ' + e.message, 'error');
+            }
+        });
     </script>
+    <style>
+        .toast-container { position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:10px; z-index:9999; }
+        .toast { background:rgba(30,41,59,0.85); color:#fff; padding:12px 18px; border-radius:10px; font-size:13px; font-weight:600; letter-spacing:.5px; box-shadow:0 4px 16px rgba(0,0,0,.4); opacity:0; transform:translateY(10px); transition:all .35s cubic-bezier(.4,0,.2,1); border:1px solid rgba(255,255,255,0.08); }
+        .toast.visible { opacity:1; transform:translateY(0); }
+        .toast-error { border-color:#ef4444; background:linear-gradient(135deg,#dc2626,#7f1d1d); }
+        .toast-warn { border-color:#f59e0b; background:linear-gradient(135deg,#f59e0b,#92400e); }
+        .toast-info { border-color:#3b82f6; background:linear-gradient(135deg,#1e3a8a,#312e81); }
+    </style>
 </body>
 </html>
