@@ -1,0 +1,920 @@
+[
+  {
+    "sequence_idx": 0,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9065308570861816,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.364443"
+  },
+  {
+    "sequence_idx": 1,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8574478030204773,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.364443"
+  },
+  {
+    "sequence_idx": 2,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8849735856056213,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 3,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8894597887992859,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 4,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.869178056716919,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 5,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9398176074028015,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 6,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9251128435134888,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 7,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.7712604403495789,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 8,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8880334496498108,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 9,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9001625180244446,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 10,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9121980667114258,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.368196"
+  },
+  {
+    "sequence_idx": 11,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8171544671058655,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 12,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8312678337097168,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 13,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8977716565132141,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 14,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8803667426109314,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 15,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8397085070610046,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 16,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8236325979232788,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 17,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9077675342559814,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 18,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9248978495597839,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 19,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8416376709938049,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.370217"
+  },
+  {
+    "sequence_idx": 20,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8766182661056519,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 21,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9033834934234619,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 22,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9133226275444031,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 23,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8786601424217224,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 24,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8913574814796448,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 25,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9206570386886597,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 26,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.917769730091095,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 27,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8346832394599915,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.372237"
+  },
+  {
+    "sequence_idx": 28,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9028947353363037,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 29,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.913234531879425,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 30,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8946962952613831,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 31,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8197321891784668,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 32,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8781741857528687,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 33,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8912538886070251,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 34,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9251916408538818,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 35,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8929592370986938,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 36,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8928307890892029,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.374257"
+  },
+  {
+    "sequence_idx": 37,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8907461166381836,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 38,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.910445511341095,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 39,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9196773767471313,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 40,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8876506686210632,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 41,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.89763343334198,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 42,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9081413745880127,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 43,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8966871500015259,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 44,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8927112817764282,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 45,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8973987698554993,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.376274"
+  },
+  {
+    "sequence_idx": 46,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9004884362220764,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.378295"
+  },
+  {
+    "sequence_idx": 47,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8816889524459839,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.378295"
+  },
+  {
+    "sequence_idx": 48,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8917776346206665,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.378295"
+  },
+  {
+    "sequence_idx": 49,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9046272039413452,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.378295"
+  },
+  {
+    "sequence_idx": 50,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9113523364067078,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.0,
+      "packet_size": 0.0,
+      "byte_rate": 0.0,
+      "flow_duration": 0.0,
+      "entropy": 0.0,
+      "src_port": 0.0,
+      "dst_port": 0.0,
+      "total_packets": 0.0
+    },
+    "timestamp": "2025-12-01T13:48:18.378295"
+  }
+]

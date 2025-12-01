@@ -94,6 +94,53 @@ def _add_no_cache_headers(resp):
 
 # ---------------------- Utility ----------------------
 
+def _select_best_checkpoint(num_features: int) -> tuple[str, str]:
+    """
+    Automatically select the best matching checkpoint based on number of features.
+    Returns (checkpoint_path, dataset_name) tuple.
+    """
+    checkpoints = []
+    
+    # Scan available checkpoints and get their metadata
+    for ckpt_file in os.listdir(CHECKPOINT_DIR):
+        if ckpt_file.endswith('.pt'):
+            ckpt_path = os.path.join(CHECKPOINT_DIR, ckpt_file)
+            try:
+                ckpt = torch.load(ckpt_path, map_location='cpu', weights_only=False)
+                meta = ckpt.get('meta', {})
+                input_dim = meta.get('input_dim', 0)
+                num_classes = meta.get('num_classes', 2)
+                f1 = meta.get('f1', 0.0)
+                
+                # Extract dataset name from filename (e.g., best_iot23.pt -> iot23)
+                dataset_name = ckpt_file.replace('best_', '').replace('.pt', '')
+                
+                checkpoints.append({
+                    'file': ckpt_file,
+                    'path': ckpt_path,
+                    'dataset': dataset_name,
+                    'input_dim': input_dim,
+                    'num_classes': num_classes,
+                    'f1': f1,
+                    'dim_diff': abs(input_dim - num_features)
+                })
+            except Exception as e:
+                print(f"Could not load checkpoint {ckpt_file}: {e}")
+                continue
+    
+    if not checkpoints:
+        raise ValueError("No valid checkpoints found")
+    
+    # Sort by: 1) smallest dimension difference, 2) highest F1 score
+    checkpoints.sort(key=lambda x: (x['dim_diff'], -x['f1']))
+    
+    best = checkpoints[0]
+    print(f"🎯 Auto-selected checkpoint: {best['file']} (input_dim={best['input_dim']}, "
+          f"data_features={num_features}, f1={best['f1']:.4f})")
+    
+    return best['path'], best['dataset']
+
+
 def _broadcast_alert(alert: dict):
     for q in list(_clients):
         try:
@@ -230,6 +277,9 @@ def api_evaluate():
     Accepts multipart/form-data with 'file' and 'checkpoint' or JSON body.
     Uploaded files are saved under uploads/uploaded/ and dataset_name is set to
     'uploaded' so the loader will pick them up.
+    
+    Now with AUTO-SELECTION: if a file is uploaded, automatically picks the best
+    matching checkpoint based on feature dimensions.
     """
     try:
         # Support both JSON and multipart/form-data
@@ -238,6 +288,7 @@ def api_evaluate():
         checkpoint_name = data.get('checkpoint', f'best_{dataset_name}.pt')
         batch_size = int(data.get('batch_size', 32))
         seq_len = int(data.get('seq_len', 64))
+        auto_select_checkpoint = False
 
         # Optional uploaded CSV for evaluation
         try:
@@ -249,14 +300,11 @@ def api_evaluate():
                 save_path = os.path.join(uploaded_dir, safe_name)
                 file.save(save_path)
                 dataset_name = 'uploaded'
+                auto_select_checkpoint = True  # Enable auto-selection for uploaded files
         except Exception as e:
             return jsonify({'success': False, 'error': f'Failed to save uploaded file: {e}'}), 400
 
-        # Check if checkpoint exists
-        ckpt_path = os.path.join(CHECKPOINT_DIR, checkpoint_name)
-        if not os.path.exists(ckpt_path):
-            return jsonify({'success': False, 'error': f'Checkpoint not found: {checkpoint_name}'}), 400
-
+        # Load data to determine feature dimensions
         _, _, test_loader, data_input_dim, data_num_classes = create_dataloaders(
             dataset_name=dataset_name,
             batch_size=batch_size,
@@ -264,6 +312,22 @@ def api_evaluate():
             data_dir=UPLOAD_DIR,
             num_workers=0
         )
+        
+        # Auto-select best matching checkpoint if file was uploaded
+        if auto_select_checkpoint:
+            try:
+                ckpt_path, matched_dataset = _select_best_checkpoint(data_input_dim)
+                checkpoint_name = os.path.basename(ckpt_path)
+                print(f"✨ Auto-selected {checkpoint_name} for {data_input_dim} features")
+            except Exception as e:
+                print(f"Auto-selection failed: {e}, falling back to manual selection")
+                ckpt_path = os.path.join(CHECKPOINT_DIR, checkpoint_name)
+        else:
+            # Manual checkpoint selection
+            ckpt_path = os.path.join(CHECKPOINT_DIR, checkpoint_name)
+        
+        if not os.path.exists(ckpt_path):
+            return jsonify({'success': False, 'error': f'Checkpoint not found: {checkpoint_name}'}), 400
 
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
         ckpt = torch.load(ckpt_path, map_location=device)
