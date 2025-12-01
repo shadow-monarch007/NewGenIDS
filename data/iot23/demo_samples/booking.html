@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Adventure - Incredible Karnataka</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-image: url('images/background_img.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+    
+    /* Green tint overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 66, 37, 0.6);
+      z-index: -1;
+    }
+    
+    .booking-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      min-height: 100vh;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Trek Info Header */
+    .trek-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      background: white;
+    }
+    
+    .trek-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    
+    .trek-info {
+      flex: 1;
+    }
+    
+    .trek-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    
+    .trek-price {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    
+    .availability-badge {
+      display: none;
+    }
+    
+    /* Booking Form */
+    .booking-form {
+      padding: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+      background: white;
+      transition: all 0.3s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    }
+    
+    .form-input::placeholder {
+      color: #999;
+    }
+
+    /* Restore native date picker appearance (overrides generic appearance:none) */
+    #trekDate {
+      -webkit-appearance: auto;
+      appearance: auto;
+    }
+    
+    /* Date input styling */
+    #trekDate {
+      cursor: pointer;
+      background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="%234CAF50" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v1h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm13 7H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/></svg>') no-repeat right 14px center;
+      background-size:18px 18px;
+    }
+    
+    /* Friday Picker Styling */
+    .friday-option {
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    
+    .friday-option:hover {
+      background: #e8f5e9;
+    }
+    
+    .friday-option:last-child {
+      border-bottom: none;
+    }
+    
+    .friday-option.selected {
+      background: #c8e6c9;
+      font-weight: 600;
+    }
+    
+    /* Custom Select Dropdown */
+    .select-wrapper {
+      position: relative;
+    }
+    
+    .select-wrapper::after {
+      content: '▼';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #666;
+      font-size: 0.8rem;
+    }
+    
+    .form-select {
+      padding-right: 45px;
+    }
+
+    /* Searchable Dropdown */
+    .searchable-dropdown {
+      position: relative;
+    }
+
+    .dropdown-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+      background: white;
+      cursor: pointer;
+    }
+
+    .dropdown-input:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    }
+
+    .dropdown-search {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .dropdown-search:focus {
+      border-bottom-color: #4CAF50;
+    }
+
+    .dropdown-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1000;
+      display: none;
+    }
+
+    .dropdown-options.show {
+      display: block;
+    }
+
+    .dropdown-option {
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .dropdown-option:hover {
+      background: #f5f5f5;
+    }
+
+    .dropdown-option.selected {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .no-options {
+      padding: 10px 16px;
+      color: #999;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    
+    /* Phone Input Row */
+    .phone-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 10px;
+    }
+    
+    /* Two Column Layout */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    /* Next Button */
+    .next-btn {
+      width: 100%;
+      padding: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    
+    .next-btn:hover {
+      background: #388E3C;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+    }
+    
+    .next-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Payment Summary Page */
+    .payment-summary {
+      display: none;
+      padding: 20px;
+    }
+
+    .payment-summary.active {
+      display: block;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      border-bottom: 1px solid #e0e0e0;
+      background: white;
+    }
+
+    .back-arrow {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 700;
+      flex-shrink: 0;
+      background: white;
+      transition: all 0.3s;
+    }
+    
+    .back-arrow:hover {
+      background: #f5f5f5;
+    }
+    
+    .back-arrow svg {
+      width: 24px;
+      height: 24px;
+      fill: #333;
+    }
+
+    .page-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+      flex: 1;
+      text-align: center;
+      margin-right: 40px;
+      white-space: nowrap;
+    }
+    
+    @media (max-width: 400px) {
+      .page-title {
+        font-size: 1rem;
+      }
+    }
+
+    .trek-subtitle {
+      font-size: 0.95rem;
+      color: #8B5E3C;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .progress-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .progress-step {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .progress-step.complete {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .progress-step.active {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .progress-step.pending {
+      background: #E0E0E0;
+      color: #999;
+    }
+
+    .selected-date-box {
+      background: #F5F5F5;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .selected-date-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .selected-date-value {
+      font-size: 1.1rem;
+      color: #4CAF50;
+      font-weight: 700;
+    }
+
+    .price-breakdown {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #E0E0E0;
+      margin: 20px 0;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0F0F0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .price-item:last-child {
+      border-bottom: none;
+      padding-top: 15px;
+      margin-top: 10px;
+      border-top: 2px solid #4CAF50;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #4CAF50;
+    }
+
+    .pay-btn {
+      width: 100%;
+      padding: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .pay-btn:hover {
+      background: #388E3C;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+    }
+
+    .secured-by {
+      text-align: center;
+      margin-top: 15px;
+      color: #666;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    
+    /* Loading Overlay */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 66, 37, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(76, 175, 80, 0.3);
+      border-top-color: #4CAF50;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 768px) {
+      .booking-container {
+        max-width: 100%;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .phone-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Info Link Style */
+    .info-link {
+      color: #2196F3;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    /* Modal Styles */
+    .info-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .info-modal.active {
+      display: flex;
+    }
+    
+    .info-modal-content {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: slideUp 0.3s ease;
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .info-modal-header {
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .info-modal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+    }
+    
+    .info-modal-close {
+      font-size: 1.5rem;
+      color: #999;
+      cursor: pointer;
+      line-height: 1;
+    }
+    
+    .info-modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #444;
+    }
+    
+    .info-modal-body ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+    
+    .info-modal-body li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader"></div>
+  </div>
+
+  <div class="booking-container">
+    <!-- Trek Info Header -->
+    <div class="trek-header">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" 
+           alt="Trek" class="trek-img" id="trekImage">
+      <div class="trek-info">
+        <div class="trek-name" id="trekName">Loading...</div>
+        <div class="trek-price" id="trekPrice">From ₹ 0/-</div>
+      </div>
+      <div class="availability-badge">Available</div>
+    </div>
+
+    <!-- Booking Form -->
+    <form class="booking-form" id="bookingForm">
+      <!-- Select Dates -->
+      <div class="form-group">
+        <label class="form-label">Select Date</label>
+        <div style="position:relative;">
+          <input type="text" class="form-input" id="trekDate" required placeholder="Select a Friday" readonly>
+          <div id="fridayPicker" class="friday-popup" style="display:none;position:absolute;left:0;top:100%;width:100%;background:#fff;border:1px solid #ccc;border-radius:8px;margin-top:6px;box-shadow:0 4px 18px rgba(0,0,0,0.12);z-index:50;padding:0;max-height:240px;overflow-y:auto;">
+            <div id="fridayOptions"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" id="fullName" placeholder="Your Name" required>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label class="form-label">Phone Number (WhatsApp)</label>
+        <div style="position: relative;">
+          <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-weight: 600; color: #333; z-index: 1;">+91</span>
+          <input type="tel" class="form-input" id="phone" placeholder="Enter 10 digit number" required maxlength="10" pattern="[0-9]{10}" style="padding-left: 55px;">
+        </div>
+        <input type="hidden" id="countryCode" value="+91">
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" id="email" placeholder="Enter your Email ID" required>
+      </div>
+
+      <!-- Number of People -->
+      <div class="form-group">
+        <label class="form-label">Number of People</label>
+        <input type="number" class="form-input" id="numPeople" min="1" value="1" required>
+      </div>
+
+      <!-- Next Button -->
+      <button type="submit" class="next-btn">N E X T</button>
+    </form>
+
+    <!-- Payment Summary (Step 2) -->
+    <div class="payment-summary" id="paymentSummary">
+      <div class="page-header" style="border-bottom: none; padding-bottom: 10px;">
+        <div class="back-arrow" onclick="goBackToForm()">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+        </div>
+        <div style="flex: 1; text-align: center;">
+          <div class="page-title" style="margin: 0;">Create Tickets & Pay</div>
+          <div class="trek-subtitle" id="summaryTrekName" style="margin-top: 5px;">Trek Name</div>
+        </div>
+      </div>
+
+      <div style="padding: 0 20px 20px;">
+        <div class="selected-date-box">
+          <div class="selected-date-label">Selected Date</div>
+          <div class="selected-date-value" id="summaryDate">-</div>
+        </div>
+
+        <div class="price-breakdown">
+          <div class="price-item">
+            <span>Number of Members</span>
+            <span id="summaryMembers">1</span>
+          </div>
+          <div class="price-item">
+            <span>Package Price</span>
+            <span id="summaryPackagePrice">₹0</span>
+          </div>
+          <div class="price-item">
+            <span>TAX (5%)</span>
+            <span id="summaryGST">₹0</span>
+          </div>
+          <div class="price-item">
+            <span>Total Amount</span>
+            <span id="summaryTotal">₹0.00</span>
+          </div>
+          
+          <!-- Advance Payment Option -->
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc;">
+            <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; color: #004225;">
+              <input type="checkbox" id="advancePaymentCheck" style="width: 18px; height: 18px; accent-color: #4CAF50; margin-top: 2px; flex-shrink: 0;">
+              <span style="font-size: 0.85rem; line-height: 1.4; flex: 1; word-wrap: break-word;">
+                <span style="font-weight: 600; display: block;">Pay Advance (₹1000 per person)</span>
+                <span style="color: #666; font-size: 0.8rem; display: block; margin-top: 2px;">Pay remaining amount at the time of trek.</span>
+              </span>
+            </label>
+          </div>
+          
+          <!-- Terms & Conditions Checkbox -->
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc;">
+            <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; font-size: 0.82rem; color: #333; line-height: 1.4;">
+              <input type="checkbox" id="termsCheck" style="width: 18px; height: 18px; accent-color: #4CAF50; margin-top: 3px; flex-shrink: 0;">
+              <span style="display: block;">
+                <span style="display: block;">I have read and accept the</span>
+                <span style="display: block; margin-top: 2px;">
+                  <span class="info-link" onclick="openModal('refundModal', event)">Refunds, Cancellation Policy</span> 
+                  & 
+                  <span class="info-link" onclick="openModal('termsModal', event)">Terms & Conditions</span>
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <button class="pay-btn" onclick="proceedToPayment()">Pay Now</button>
+
+        <div class="secured-by">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#4CAF50">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+          </svg>
+          secured by : nAItrons
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div class="info-modal" id="termsModal">
+    <div class="info-modal-content">
+      <div class="info-modal-header">
+        <div class="info-modal-title">Terms & Conditions</div>
+        <div class="info-modal-close" onclick="closeModal('termsModal')">&times;</div>
+      </div>
+      <div class="info-modal-body">
+        <ul>
+          <li>This is an adventurous & budget friendly trip, plz come with an adjusting & open mindset. Do not expect luxury or much comfort.</li>
+          <li>As this is a group trip, kindly be co-operative & friendly with co-travellers & Trip co-ordinator for smooth execution of the trip.</li>
+          <li>Smoking & consumption of alcohol is strictly prohibited during Trekking & journey.</li>
+          <li>Any kind of misbehavior or actions that may spoil the atmosphere of the trip won't be tolerated.</li>
+          <li>Seats will be on first come first take basis. No seat numbers or reservations. Same seat should be occupied during return journey too.</li>
+          <li>Littering in nature during trek or entire trip is strictly prohibited, wastes has to be put in place.</li>
+          <li>Avoid bringing valuables (Gold, cash).</li>
+          <li>If there is any restrictions on a particular trek/place, due to natural calamities & sudden government regulations, we will be executing alternate plan to which all participants shall be co-operative.</li>
+          <li>We reserve the rights to use or post the pictures taken during the trip, if anybody does not wish to be part of pictures can avoid getting clicked.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Refund Modal -->
+  <div class="info-modal" id="refundModal">
+    <div class="info-modal-content">
+      <div class="info-modal-header">
+        <div class="info-modal-title">Refund & Cancellation Policy</div>
+        <div class="info-modal-close" onclick="closeModal('refundModal')">&times;</div>
+      </div>
+      <div class="info-modal-body">
+        <ul>
+          <li>Advance amount is non refundable incase of cancellation as we are taking only 25% of total cost as advance</li>
+          <li>Advance amount will be refunded within 24 hours if trip is cancelled from our end.</li>
+          <li>Advance amount will be carry forwarded, if trip cancelled due to any sudden closures of places by Government / Forest department in case of Natural disasters or any kind of hurdles.</li>
+        </ul>
+      </div>
+    </div>
+
+      <!-- Booking Success Modal -->
+      <div class="info-modal" id="bookingSuccessModal">
+        <div class="info-modal-content">
+          <div class="info-modal-header">
+            <div class="info-modal-title">Booking Confirmed</div>
+            <div class="info-modal-close" onclick="closeModal('bookingSuccessModal')">&times;</div>
+          </div>
+          <div class="info-modal-body" id="bookingSuccessBody">
+            <!-- Filled dynamically -->
+          </div>
+          <div style="padding: 12px 20px; display:flex; gap:10px; justify-content:flex-end; border-top:1px solid #eee;">
+            <button class="next-btn" style="background:#4CAF50; padding:10px 18px;" id="downloadInvoiceBtn">Download Bill</button>
+            <button class="next-btn" style="background:#2196F3; padding:10px 18px;" onclick="closeModal('bookingSuccessModal')">Close</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <script>
+    const API_URL = './api';
+    let trekData = null;
+    let selectedDate = null;
+
+    // Get trek ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const trekId = urlParams.get('id');
+
+    // Indian States and Districts data
+    const statesAndDistricts = {
+      "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
+      "Arunachal Pradesh": ["Anjaw", "Central Siang", "Changlang", "Dibang Valley", "East Kameng", "East Siang", "Kurung Kumey", "Lohit", "Longding", "Lower Dibang Valley", "Lower Subansiri", "Namsai", "Papum Pare", "Siang", "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang"],
+      "Assam": ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup", "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Dima Hasao", "Sivasagar", "Sonitpur", "South Salmara-Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
+      "Bihar": ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
+      "Chhattisgarh": ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada", "Dhamtari", "Durg", "Gariaband", "Gaurela Pendra Marwahi", "Janjgir Champa", "Jashpur", "Kabirdham", "Kanker", "Kondagaon", "Korba", "Koriya", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur", "Surguja"],
+      "Goa": ["North Goa", "South Goa"],
+      "Gujarat": ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad", "Chhota Udaipur", "Dahod", "Dang", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kachchh", "Kheda", "Mahisagar", "Mehsana", "Morbi", "Narmada", "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat", "Surendranagar", "Tapi", "Vadodara", "Valsad"],
+      "Haryana": ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Nuh", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"],
+      "Himachal Pradesh": ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul and Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"],
+      "Jharkhand": ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahibganj", "Seraikela Kharsawan", "Simdega", "West Singhbhum"],
+      "Karnataka": ["Bagalkot", "Bangalore Rural", "Bangalore Urban", "Belgaum", "Bellary", "Bidar", "Bijapur", "Chamarajanagar", "Chikkaballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Gulbarga", "Hassan", "Haveri", "Kodagu", "Kolar", "Koppal", "Mandya", "Mysore", "Raichur", "Ramanagara", "Shimoga", "Tumkur", "Udupi", "Uttara Kannada", "Vijayapura", "Yadgir"],
+      "Kerala": ["Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"],
+      "Madhya Pradesh": ["Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur", "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narsinghpur", "Neemuch", "Niwari", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa", "Sagar", "Satna", "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri", "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"],
+      "Maharashtra": ["Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar", "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri", "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"],
+      "Manipur": ["Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"],
+      "Meghalaya": ["East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "North Garo Hills", "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"],
+      "Mizoram": ["Aizawl", "Champhai", "Hnahthial", "Khawzawl", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Saitual", "Serchhip"],
+      "Nagaland": ["Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"],
+      "Odisha": ["Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Deogarh", "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghpur", "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj", "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur", "Sundargarh"],
+      "Punjab": ["Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Ferozepur", "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Mansa", "Moga", "Mohali", "Muktsar", "Pathankot", "Patiala", "Rupnagar", "Sangrur", "Shaheed Bhagat Singh Nagar", "Tarn Taran"],
+      "Rajasthan": ["Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Sri Ganganagar", "Tonk", "Udaipur"],
+      "Sikkim": ["East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"],
+      "Tamil Nadu": ["Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kanchipuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Mayiladuthurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupattur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"],
+      "Telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar", "Jogulamba", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Ranga Reddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
+      "Tripura": ["Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"],
+      "Uttar Pradesh": ["Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Faizabad", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj", "Raebareli", "Rampur", "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shrawasti", "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"],
+      "Uttarakhand": ["Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri", "Pithoragarh", "Rudraprayag", "Tehri", "Udham Singh Nagar", "Uttarkashi"],
+      "West Bengal": ["Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur", "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur"],
+      "Andaman and Nicobar Islands": ["Nicobar", "North and Middle Andaman", "South Andaman"],
+      "Chandigarh": ["Chandigarh"],
+      "Dadra and Nagar Haveli and Daman and Diu": ["Dadra & Nagar Haveli", "Daman", "Diu"],
+      "Delhi": ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"],
+      "Jammu and Kashmir": ["Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kathua", "Kishtwar", "Kulgam", "Kupwara", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"],
+      "Ladakh": ["Kargil", "Leh"],
+      "Lakshadweep": ["Lakshadweep"],
+      "Puducherry": ["Karaikal", "Mahe", "Puducherry", "Yanam"]
+    };
+
+    // Initialize searchable dropdowns
+    function initializeDropdowns() {
+      initializeStateDropdown();
+      initializeCityDropdown();
+    }
+
+    // Initialize state dropdown
+    function initializeStateDropdown() {
+      const stateInput = document.getElementById('stateInput');
+      const stateOptions = document.getElementById('stateOptions');
+      const stateSearch = document.getElementById('stateSearch');
+      const stateList = document.getElementById('stateList');
+
+      // Populate states
+      populateStates();
+
+      // Toggle dropdown
+      stateInput.addEventListener('click', () => {
+        closeAllDropdowns();
+        stateOptions.classList.add('show');
+        stateSearch.focus();
+      });
+
+      // Search functionality
+      stateSearch.addEventListener('input', (e) => {
+        filterStates(e.target.value);
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.searchable-dropdown')) {
+          closeAllDropdowns();
+        }
+      });
+    }
+
+    // Initialize city dropdown
+    function initializeCityDropdown() {
+      const cityInput = document.getElementById('cityInput');
+      const cityOptions = document.getElementById('cityOptions');
+      const citySearch = document.getElementById('citySearch');
+
+      cityInput.addEventListener('click', () => {
+        if (!selectedState) {
+          alert('Please select a state first');
+          return;
+        }
+        closeAllDropdowns();
+        cityOptions.classList.add('show');
+        citySearch.focus();
+      });
+
+      citySearch.addEventListener('input', (e) => {
+        filterCities(e.target.value);
+      });
+    }
+
+    // Populate states
+    function populateStates() {
+      const stateList = document.getElementById('stateList');
+      const states = Object.keys(statesAndDistricts).sort();
+      
+      stateList.innerHTML = '';
+      states.forEach(state => {
+        const option = document.createElement('div');
+        option.className = 'dropdown-option';
+        option.textContent = state;
+        option.addEventListener('click', () => selectState(state));
+        stateList.appendChild(option);
+      });
+    }
+
+    // Filter states
+    function filterStates(query) {
+      const stateList = document.getElementById('stateList');
+      const states = Object.keys(statesAndDistricts).sort();
+      const filtered = states.filter(state => 
+        state.toLowerCase().includes(query.toLowerCase())
+      );
+
+      stateList.innerHTML = '';
+      if (filtered.length === 0) {
+        stateList.innerHTML = '<div class="no-options">No states found</div>';
+      } else {
+        filtered.forEach(state => {
+          const option = document.createElement('div');
+          option.className = 'dropdown-option';
+          option.textContent = state;
+          option.addEventListener('click', () => selectState(state));
+          stateList.appendChild(option);
+        });
+      }
+    }
+
+    // Select state
+    function selectState(state) {
+      selectedState = state;
+      selectedCity = '';
+      document.getElementById('stateInput').value = state;
+      document.getElementById('cityInput').value = '';
+      document.getElementById('cityInput').placeholder = 'Select District';
+      closeAllDropdowns();
+      populateCities();
+    }
+
+    // Populate cities/districts
+    function populateCities() {
+      const cityList = document.getElementById('cityList');
+      const districts = statesAndDistricts[selectedState] || [];
+      
+      cityList.innerHTML = '';
+      districts.forEach(district => {
+        const option = document.createElement('div');
+        option.className = 'dropdown-option';
+        option.textContent = district;
+        option.addEventListener('click', () => selectCity(district));
+        cityList.appendChild(option);
+      });
+    }
+
+    // Filter cities
+    function filterCities(query) {
+      const cityList = document.getElementById('cityList');
+      const districts = statesAndDistricts[selectedState] || [];
+      const filtered = districts.filter(district => 
+        district.toLowerCase().includes(query.toLowerCase())
+      );
+
+      cityList.innerHTML = '';
+      if (filtered.length === 0) {
+        cityList.innerHTML = '<div class="no-options">No districts found</div>';
+      } else {
+        filtered.forEach(district => {
+          const option = document.createElement('div');
+          option.className = 'dropdown-option';
+          option.textContent = district;
+          option.addEventListener('click', () => selectCity(district));
+          cityList.appendChild(option);
+        });
+      }
+    }
+
+    // Select city
+    function selectCity(city) {
+      selectedCity = city;
+      document.getElementById('cityInput').value = city;
+      closeAllDropdowns();
+    }
+
+    // Close all dropdowns
+    function closeAllDropdowns() {
+      document.querySelectorAll('.dropdown-options').forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+      // Clear search inputs
+      document.getElementById('stateSearch').value = '';
+      document.getElementById('citySearch').value = '';
+    }
+
+    // Build next 5 Fridays list for custom popup
+    function buildFridayList() {
+      const wrap = document.getElementById('fridayOptions');
+      if (!wrap) return;
+      wrap.innerHTML='';
+      let d = new Date();
+      let added=0;
+      while (added < 5) {
+        if (d.getDay() === 5) {
+          const yyyy = d.getFullYear();
+          const mm = String(d.getMonth()+1).padStart(2,'0');
+          const dd = String(d.getDate()).padStart(2,'0');
+          const iso = `${yyyy}-${mm}-${dd}`;
+          
+          // Create date range (Friday to Sunday)
+          const startDate = new Date(d);
+          const endDate = new Date(d);
+          endDate.setDate(endDate.getDate() + 2); // Add 2 days for Sunday
+          
+          const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          
+          const startDay = dayNames[startDate.getDay()];
+          const startMonth = monthNames[startDate.getMonth()];
+          const startDayNum = String(startDate.getDate()).padStart(2, '0');
+          const startYear = startDate.getFullYear();
+          
+          const endDay = dayNames[endDate.getDay()];
+          const endMonth = monthNames[endDate.getMonth()];
+          const endDayNum = String(endDate.getDate()).padStart(2, '0');
+          const endYear = endDate.getFullYear();
+          
+          // Format: "Fri Dec 05 2025 to Sun Dec 07 2025"
+          const formatted = `${startDay} ${startMonth} ${startDayNum} ${startYear} to ${endDay} ${endMonth} ${endDayNum} ${endYear}`;
+          
+          const opt = document.createElement('div');
+          opt.className='friday-option';
+          opt.textContent = formatted;
+          opt.dataset.value = iso;
+          opt.addEventListener('click', ()=> {
+            document.getElementById('trekDate').value = iso;
+            document.getElementById('fridayPicker').style.display='none';
+          });
+          wrap.appendChild(opt);
+          added++;
+        }
+        d.setDate(d.getDate()+1);
+      }
+    }
+
+    function initCustomFridayPicker() {
+      const input = document.getElementById('trekDate');
+      const popup = document.getElementById('fridayPicker');
+      if (!input || !popup) return;
+      buildFridayList();
+      input.addEventListener('click', ()=> {
+        popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+      });
+      document.addEventListener('click', (e)=> {
+        if (!e.target.closest('#fridayPicker') && e.target !== input) {
+          popup.style.display='none';
+        }
+      });
+    }
+
+    // Load trek details
+    async function loadTrekDetails() {
+      if (!trekId) {
+        alert('No trek selected. Please go back and choose a trek.');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/treks.php?id=${trekId}`);
+        
+        if (!response.ok) {
+          throw new Error('Trek not found');
+        }
+        
+        trekData = await response.json();
+        
+        document.getElementById('trekName').textContent = trekData.name + ' [Rs.' + trekData.price + ']';
+        document.getElementById('trekPrice').textContent = `From ₹ ${trekData.price}/-`;
+        
+        // Convert Google Drive link to direct image URL
+        let imageUrl = trekData.image || 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80';
+        if (imageUrl.includes('drive.google.com')) {
+          const fileIdMatch = imageUrl.match(/\/file\/d\/([^\/]+)/) || imageUrl.match(/[?&]id=([^&]+)/);
+          if (fileIdMatch) {
+            imageUrl = `https://drive.google.com/thumbnail?id=${fileIdMatch[1]}&sz=w400`;
+          }
+        }
+        document.getElementById('trekImage').src = imageUrl;
+        document.getElementById('trekImage').onerror = function() {
+          this.src = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80';
+        };
+        
+        // Initialize custom Friday picker (no external library)
+        initCustomFridayPicker();
+        
+        // Track view
+        fetch(`${API_URL}/treks.php?id=${trekId}&action=view`, { method: 'POST' }).catch(() => {});
+        
+        // Hide loading overlay
+        setTimeout(() => {
+          document.getElementById('loadingOverlay').classList.add('hidden');
+        }, 300);
+      } catch (error) {
+        console.error('Error loading trek:', error);
+        alert('Error loading trek details. Please try again.');
+        window.location.href = 'index.html';
+      }
+    }
+
+    // Form submission
+    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const trekDate = document.getElementById('trekDate').value;
+      
+      if (!trekDate) {
+        alert('Please select a date');
+        return;
+      }
+
+      // Show payment summary instead of submitting
+      showPaymentSummary(trekDate);
+    });
+
+    // Show payment summary page
+    function showPaymentSummary(date) {
+      // Hide form, show payment summary
+      document.getElementById('bookingForm').style.display = 'none';
+      document.querySelector('.trek-header').style.display = 'none';
+      document.getElementById('paymentSummary').classList.add('active');
+
+      // Format date nicely
+      const dateObj = new Date(date + 'T00:00:00');
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const formattedDate = `${days[dateObj.getDay()]} ${months[dateObj.getMonth()]} ${String(dateObj.getDate()).padStart(2, '0')}`;
+
+      // Calculate prices
+      const numMembers = parseInt(document.getElementById('numPeople').value) || 1;
+      const basePrice = (Number(trekData.price) || 0) * numMembers;
+      const gst = basePrice * 0.05;
+      const total = basePrice + gst;
+
+      // Update summary display
+      document.getElementById('summaryTrekName').textContent = trekData.name + ' [Rs.' + trekData.price + ']';
+      document.getElementById('summaryDate').textContent = formattedDate;
+      document.getElementById('summaryMembers').textContent = numMembers;
+      document.getElementById('summaryPackagePrice').textContent = '₹' + basePrice.toFixed(2);
+      document.getElementById('summaryGST').textContent = '₹' + gst.toFixed(2);
+      document.getElementById('summaryTotal').textContent = '₹' + total.toFixed(2);
+      
+      // Reset advance payment checkbox
+      const advanceCheck = document.getElementById('advancePaymentCheck');
+      if(advanceCheck) {
+        advanceCheck.checked = false;
+        // Update Pay Button
+        updatePayButton(total, numMembers);
+        
+        // Add listener for checkbox
+        advanceCheck.onclick = function() {
+          updatePayButton(total, numMembers);
+        };
+      } else {
+         // Fallback if element missing
+         document.querySelector('.pay-btn').textContent = `Pay Now ₹${total.toFixed(2)}`;
+      }
+    }
+    
+    function updatePayButton(fullTotal, numMembers) {
+      const advanceCheck = document.getElementById('advancePaymentCheck');
+      const payBtn = document.querySelector('.pay-btn');
+      
+      if (advanceCheck && advanceCheck.checked) {
+        const advanceAmount = 1000 * numMembers;
+        payBtn.textContent = `Pay Advance ₹${advanceAmount}`;
+      } else {
+        payBtn.textContent = `Pay Now ₹${fullTotal.toFixed(2)}`;
+      }
+    }
+
+    // Go back to form
+    function goBackToForm() {
+      document.getElementById('paymentSummary').classList.remove('active');
+      document.getElementById('bookingForm').style.display = 'block';
+      document.querySelector('.trek-header').style.display = 'flex';
+    }
+
+    // Proceed to payment
+    async function proceedToPayment() {
+      // Validate Terms Checkbox
+      const termsCheck = document.getElementById('termsCheck');
+      if (!termsCheck || !termsCheck.checked) {
+        alert('Please accept the Terms & Conditions and Refund Policy to proceed.');
+        return;
+      }
+
+      const trekDate = document.getElementById('trekDate').value;
+      const numMembers = parseInt(document.getElementById('numPeople').value) || 1;
+      const basePrice = (Number(trekData.price) || 0) * numMembers;
+      const fullTotal = basePrice * 1.05; // Including GST
+      
+      const advanceCheck = document.getElementById('advancePaymentCheck');
+      const isAdvance = advanceCheck ? advanceCheck.checked : false;
+      const amountToPay = isAdvance ? (1000 * numMembers) : fullTotal;
+      
+      // If advance, append info to trekName so admin knows
+      let trekNameForBooking = trekData.name;
+      if (isAdvance) {
+        trekNameForBooking += ` (Advance Paid: ₹${amountToPay}, Total: ₹${fullTotal.toFixed(2)})`;
+      }
+
+      const bookingData = {
+        trekName: trekNameForBooking,
+        date: trekDate,
+        quantity: numMembers,
+        total: amountToPay,
+        contactName: document.getElementById('fullName').value,
+        contactPhone: document.getElementById('countryCode').value + document.getElementById('phone').value,
+        contactEmail: document.getElementById('email').value,
+        source: 'Website' // Default source since field is removed
+      };
+
+      try {
+        // 1) Create server-side Razorpay order
+        // Use SDK-backed create_order endpoint
+        const orderResp = await fetch(`${API_URL}/create_order.php`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: amountToPay, currency: 'INR' })
+        });
+
+        if (!orderResp.ok) {
+          const err = await orderResp.json().catch(()=>({}));
+          console.error('Order creation failed', err);
+          alert('Failed to create payment order. Please try again later.');
+          return;
+        }
+
+        const order = await orderResp.json();
+
+        // 2) Get public key id from server
+        const keyResp = await fetch(`${API_URL}/razorpay_key.php`);
+        const keyJson = await keyResp.json();
+        const RAZORPAY_KEY = keyJson.key_id || 'rzp_test_your_key_id_here';
+
+        // 3) Load Razorpay Checkout script dynamically
+        await new Promise((resolve, reject) => {
+          if (window.Razorpay) return resolve();
+          const s = document.createElement('script');
+          s.src = 'https://checkout.razorpay.com/v1/checkout.js';
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+
+        // 4) Open Checkout
+        const options = {
+          key: RAZORPAY_KEY,
+          // Use the Razorpay order's amount (paise) if available. Fallback to converting rupees->paise.
+          amount: (order.raw && order.raw.amount) ? order.raw.amount : Math.round((order.amount || 0) * 100),
+          currency: order.currency || 'INR',
+          name: trekData.name,
+          description: isAdvance ? 'Advance Payment' : 'Full Payment',
+          order_id: order.id,
+          handler: async function (response) {
+            // On success, POST payment + booking info to server verify endpoint
+            const verifyPayload = {
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+              bookingData: bookingData
+            };
+
+            const payBtn = document.querySelector('.pay-btn');
+            const originalBtnText = payBtn ? payBtn.textContent : null;
+            if (payBtn) {
+              payBtn.disabled = true;
+              payBtn.textContent = 'Processing payment...';
+            }
+
+            async function doVerify() {
+              try {
+                const resp = await fetch(`${API_URL}/verify_payment.php`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(verifyPayload)
+                });
+
+                const json = await resp.json().catch(()=>({}));
+
+                if (resp.ok && json.success) {
+                  // Show booking success modal with details
+                  const bookingId = json.bookingId || null;
+                  const amountPaid = amountToPay; // rupees
+                  const totalAmount = fullTotal; // rupees
+                  const remaining = (isAdvance ? (totalAmount - amountPaid) : 0);
+                  showBookingSuccessModal(bookingId, bookingData, amountPaid, remaining, isAdvance);
+                  return;
+                }
+
+                // If 202 accepted (pending capture)
+                if (resp.status === 202) {
+                  alert('Payment received but not captured yet. Booking saved as pending. We will notify you once confirmed.');
+                  window.location.href = 'index.html';
+                  return;
+                }
+
+                // Otherwise show retry UI
+                const errMsg = (json && json.error) ? json.error : 'Failed to verify payment. Please try again.';
+                showPaymentError(errMsg);
+              } catch (err) {
+                console.error('Verification error:', err);
+                showPaymentError('Network error while verifying payment. Check connection and retry.');
+              }
+            }
+
+            function showPaymentError(message) {
+              if (payBtn) {
+                payBtn.disabled = false;
+                payBtn.textContent = originalBtnText || 'Pay Now';
+              }
+              // Show confirm dialog with retry option
+              if (confirm(message + '\n\nClick OK to retry verification or Cancel to contact support.')) {
+                // Retry verification (idempotent on server)
+                if (payBtn) {
+                  payBtn.disabled = true;
+                  payBtn.textContent = 'Retrying...';
+                }
+                doVerify();
+              } else {
+                showToast('Please contact support if you face issues.');
+              }
+            }
+
+            // Start verification
+            await doVerify();
+          },
+          modal: {
+            ondismiss: function() {
+              showToast('Payment cancelled');
+            }
+          }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+
+      } catch (error) {
+        console.error('Payment error:', error);
+        alert('Error initiating payment. Please try again.');
+      }
+    }
+    
+    // Modal Functions
+    function openModal(modalId, event) {
+      if(event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      document.getElementById(modalId).classList.add('active');
+    }
+    
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // Show booking success modal and wire download button
+    function showBookingSuccessModal(bookingId, bookingData, amountPaid, remainingAmount, isAdvance) {
+      const body = document.getElementById('bookingSuccessBody');
+      const paidText = `₹${Number(amountPaid).toFixed(2)}`;
+      const remainingText = `₹${Number(remainingAmount).toFixed(2)}`;
+
+      let html = '';
+      html += `<p style="font-size:1rem;">Thank you! Your booking has been received.</p>`;
+      html += `<p style="margin-top:8px;"><strong>Package:</strong> ${escapeHtml(bookingData.trekName || '')}</p>`;
+      html += `<p><strong>Booking ID:</strong> ${escapeHtml(bookingId || 'N/A')}</p>`;
+      html += `<p><strong>Amount Paid:</strong> ${paidText}</p>`;
+      if (isAdvance) {
+        html += `<p style="color:#d97706;"><strong>Advance Paid.</strong> Remaining amount to pay at trek: <strong>${remainingText}</strong></p>`;
+      } else {
+        html += `<p style="color:#2e7d32;"><strong>Full payment received.</strong></p>`;
+      }
+      html += `<p style="margin-top:12px;"><strong>Contact:</strong> ${escapeHtml(bookingData.contactName || '')} — ${escapeHtml(bookingData.contactPhone || '')}</p>`;
+
+      body.innerHTML = html;
+      document.getElementById('bookingSuccessModal').classList.add('active');
+
+      const dlBtn = document.getElementById('downloadInvoiceBtn');
+      dlBtn.onclick = function() {
+        const invoiceHtml = generateInvoiceHtml(bookingId, bookingData, amountPaid, remainingAmount, isAdvance);
+        downloadFile(invoiceHtml, `invoice_${bookingId || Date.now()}.html`, 'text/html');
+      };
+    }
+
+    function escapeHtml(s) {
+      if (!s) return '';
+      return String(s).replace(/[&<>"]+/g, function(match) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[match]);
+      });
+    }
+
+    function generateInvoiceHtml(bookingId, bookingData, amountPaid, remainingAmount, isAdvance) {
+      const paid = Number(amountPaid).toFixed(2);
+      const remaining = Number(remainingAmount).toFixed(2);
+      const now = new Date().toLocaleString();
+      const html = `<!doctype html><html><head><meta charset="utf-8"><title>Invoice ${bookingId}</title><style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#333} .header{display:flex;justify-content:space-between;align-items:center} .box{border:1px solid #eee;padding:12px;border-radius:8px;margin-top:12px} .total{font-weight:700;font-size:1.2rem;color:#4CAF50}</style></head><body><div class="header"><div><h2>Incredible Karnataka</h2><div>Invoice / Booking Confirmation</div></div><div><strong>Booking ID:</strong> ${escapeHtml(bookingId || '')}<br>${escapeHtml(now)}</div></div><div class="box"><p><strong>Package:</strong> ${escapeHtml(bookingData.trekName || '')}</p><p><strong>Name:</strong> ${escapeHtml(bookingData.contactName || '')}</p><p><strong>Phone:</strong> ${escapeHtml(bookingData.contactPhone || '')}</p><p><strong>Email:</strong> ${escapeHtml(bookingData.contactEmail || '')}</p></div><div class="box"><p><strong>Amount Paid:</strong> ₹${paid}</p>${isAdvance?`<p><strong>Remaining:</strong> ₹${remaining}</p>`:''}<p class="total">${isAdvance?`Pay remaining at trek: ₹${remaining}`:'Full payment received'}</p></div><p style="margin-top:24px;font-size:0.9rem;color:#666">This is a computer generated invoice.</p></body></html>`;
+      return html;
+    }
+
+    function downloadFile(content, filename, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+    
+    // Close modal on outside click
+    window.onclick = function(event) {
+      if (event.target.classList.contains('info-modal')) {
+        event.target.classList.remove('active');
+      }
+    };
+
+    // Load trek details on page load
+    loadTrekDetails();
+  </script>
+</body>
+</html>

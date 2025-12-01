@@ -28,6 +28,14 @@ from sklearn.preprocessing import StandardScaler
 import torch
 from torch.utils.data import Dataset, DataLoader
 
+# Import flexible column mapper
+try:
+    from src.column_mapper import auto_map_columns
+except ImportError:
+    # Fallback if column_mapper not available
+    def auto_map_columns(df, verbose=True):
+        return df
+
 
 @dataclass
 class DataConfig:
@@ -86,12 +94,19 @@ def _load_dataset_frames(dataset_name: str, base_data_dir: str) -> pd.DataFrame:
     for f in files:
         try:
             df = pd.read_csv(f)
+            # Apply flexible column mapping to each CSV
+            df = auto_map_columns(df, verbose=False)
             dfs.append(df)
         except Exception as e:
             print(f"Warning: failed to read {f}: {e}")
     if not dfs:
         raise RuntimeError("Failed to read any CSV files.")
-    return pd.concat(dfs, ignore_index=True)
+    combined_df = pd.concat(dfs, ignore_index=True)
+    
+    # Apply column mapping one more time to the combined DataFrame to ensure consistency
+    combined_df = auto_map_columns(combined_df, verbose=True)
+    
+    return combined_df
 
 
 def _select_features(df: pd.DataFrame, target_column: str) -> Tuple[pd.DataFrame, pd.Series]:

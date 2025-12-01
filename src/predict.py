@@ -69,7 +69,7 @@ def preprocess_traffic_data(df: pd.DataFrame, scaler, expected_features: int) ->
     Removes non-feature columns, normalizes, handles missing features.
     """
     # Remove label-related columns if present (for testing with labeled data)
-    label_cols = ['label', 'Label', 'attack_type', 'class', 'Class', 'target', 'Target']
+    label_cols = ['label', 'Label', 'attack_type', 'class', 'Class', 'target', 'Target', 'flow_id', 'time_offset']
     df_clean = df.drop(columns=[col for col in label_cols if col in df.columns], errors='ignore')
     
     # Keep only numeric columns
@@ -129,31 +129,47 @@ def predict_traffic(csv_path: str, checkpoint_path: str, dataset_name: str = "io
     # Create sequences
     X_seq = create_sequences(X, seq_len)
     
-    # Predict
+    # Predict in batches for performance
+    batch_size = 64
     predictions = []
+    
     with torch.no_grad():
-        for i, seq in enumerate(X_seq):
-            seq_tensor = torch.from_numpy(seq).unsqueeze(0).to(device)  # [1, seq_len, features]
-            logits = model(seq_tensor)
+        for i in range(0, len(X_seq), batch_size):
+            batch = X_seq[i:i+batch_size]
+            batch_tensor = torch.from_numpy(batch).to(device)
+            
+            logits = model(batch_tensor)
             probs = torch.softmax(logits, dim=1)
-            pred_class = probs.argmax(dim=1).item()
-            confidence = probs[0, pred_class].item()
+            pred_classes = probs.argmax(dim=1).cpu().numpy()
+            confidences = probs.max(dim=1).values.cpu().numpy()
             
-            # Get attack type name
-            attack_type = ATTACK_TYPES.get(pred_class, f"Unknown_{pred_class}")
-            
-            # Extract features from sequence for explanation
-            features = extract_key_features(df.iloc[i] if i < len(df) else df.iloc[-1])
-            
-            predictions.append({
-                "sequence_idx": i,
-                "attack_type": attack_type,
-                "predicted_class": int(pred_class),
-                "confidence": float(confidence),
-                "severity": get_severity(attack_type, confidence),
-                "features": features,
-                "timestamp": datetime.now().isoformat()
-            })
+            for j in range(len(batch)):
+                global_idx = i + j
+                pred_class = int(pred_classes[j])
+                confidence = float(confidences[j])
+                
+                # Get attack type name
+                attack_type = ATTACK_TYPES.get(pred_class, f"Unknown_{pred_class}")
+                
+                # Extract features from sequence for explanation
+                # Use the last row of the sequence as representative
+                row_idx = global_idx + seq_len - 1
+                if row_idx < len(df):
+                    row = df.iloc[row_idx]
+                else:
+                    row = df.iloc[-1]
+                
+                features = extract_key_features(row)
+                
+                predictions.append({
+                    "sequence_idx": global_idx,
+                    "attack_type": attack_type,
+                    "predicted_class": pred_class,
+                    "confidence": confidence,
+                    "severity": get_severity(attack_type, confidence),
+                    "features": features,
+                    "timestamp": datetime.now().isoformat()
+                })
     
     return predictions
 

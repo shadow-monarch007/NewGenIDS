@@ -1,0 +1,137 @@
+{
+  "timestamp": "2025-12-01T09:18:19.418579",
+  "checkpoints": [
+    {
+      "path": "checkpoints/best_iot23_retrained.pt",
+      "meta": {
+        "input_dim": 39,
+        "num_classes": 2,
+        "epoch": 4,
+        "f1": 0.8638416626120096
+      },
+      "architecture": "IDSModel",
+      "total_params": 306117,
+      "file_size_mb": 1.1779546737670898
+    },
+    {
+      "path": "checkpoints/best_iot23.pt",
+      "meta": {
+        "input_dim": 39,
+        "num_classes": 2,
+        "epoch": 4,
+        "f1": 0.873690941859806
+      },
+      "architecture": "IDSModel",
+      "total_params": 306117,
+      "file_size_mb": 1.1776018142700195
+    },
+    {
+      "path": "checkpoints/best_uploaded.pt",
+      "meta": {
+        "input_dim": 35,
+        "num_classes": 8,
+        "f1": 0.880579100158287,
+        "epoch": 5
+      },
+      "architecture": "NextGenIDS",
+      "total_params": 339759,
+      "file_size_mb": 1.3114814758300781
+    }
+  ],
+  "demo_results": [
+    {
+      "file": "brute_force.csv",
+      "expected": "BRUTE_FORCE",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "brute_force_ftp.csv",
+      "expected": "BRUTE_FORCE_FTP",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "ddos.csv",
+      "expected": "DDOS",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "ddos_dns_amplification.csv",
+      "expected": "DDOS_DNS_AMPLIFICATION",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "ddos_https.csv",
+      "expected": "DDOS_HTTPS",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "malware_c2.csv",
+      "expected": "MALWARE_C2",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "malware_c2_https.csv",
+      "expected": "MALWARE_C2_HTTPS",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "normal.csv",
+      "expected": "NORMAL",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "normal_email_smtp.csv",
+      "expected": "NORMAL_EMAIL_SMTP",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "normal_ntp_sync.csv",
+      "expected": "NORMAL_NTP_SYNC",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "normal_web_browsing.csv",
+      "expected": "NORMAL_WEB_BROWSING",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "port_scan.csv",
+      "expected": "PORT_SCAN",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "port_scan_slow.csv",
+      "expected": "PORT_SCAN_SLOW",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "sql_injection.csv",
+      "expected": "SQL_INJECTION",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    },
+    {
+      "file": "sql_injection_mysql.csv",
+      "expected": "SQL_INJECTION_MYSQL",
+      "predicted": "ERROR",
+      "error": "X has 39 features, but StandardScaler is expecting 55 features as input."
+    }
+  ],
+  "conclusion": {
+    "training_quality": "EXCELLENT",
+    "demo_ready": false
+  }
+}

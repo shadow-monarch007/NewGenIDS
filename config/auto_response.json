@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "dry_run": true,
+  "auto_block_threshold": 0.9,
+  "allowed_actions": [
+    "BLOCK_IP",
+    "LOG_EVENT",
+    "ALERT_ONLY"
+  ],
+  "whitelist_ips": [
+    "127.0.0.1",
+    "::1",
+    "192.168.1.1"
+  ],
+  "max_blocks_per_hour": 50,
+  "notification_email": null
+}

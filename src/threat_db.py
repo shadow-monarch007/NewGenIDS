@@ -14,10 +14,14 @@ class ThreatDatabase:
     def __init__(self, db_path: str = "data/threats.json"):
         self.db_path = db_path
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
+        # Allow disabling persistence for strictly real-time, session-only demos
+        self.persist = os.getenv('IDS_DISABLE_PERSIST', '0') not in ('1', 'true', 'True')
         self.threats = self._load()
     
     def _load(self) -> List[Dict]:
         """Load threats from JSON file."""
+        if not self.persist:
+            return []
         if os.path.exists(self.db_path):
             try:
                 with open(self.db_path, 'r') as f:
@@ -36,6 +40,8 @@ class ThreatDatabase:
     
     def _save(self):
         """Save threats to JSON file."""
+        if not self.persist:
+            return
         try:
             with open(self.db_path, 'w') as f:
                 json.dump(self.threats, f, indent=2)

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NextGen IDS</title>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+.header { background: #1e293b; padding: 1.5rem 2rem; border-bottom: 2px solid #3b82f6; }
+.tabs { background: #1e293b; padding: 1rem 2rem; display: flex; gap: 1rem; }
+.tab { padding: 0.75rem 1.5rem; border-radius: 8px; background: transparent; border: none; color: #94a3b8; cursor: pointer; }
+.tab.active { background: #3b82f6; color: white; }
+.container { max-width: 1600px; margin: 0 auto; padding: 2rem; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.card { background: #1e293b; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.stat-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; text-align: center; }
+.stat-card h3 { font-size: 2rem; }
+.form-control { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; margin-bottom: 1rem; }
+.btn { padding: 0.75rem 1.5rem; border-radius: 8px; border: none; background: #3b82f6; color: white; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="header"><h1>🛡️ NextGen IDS</h1></div>
+<div class="tabs">
+<button class="tab active" onclick="switchTab(0)">Dashboard</button>
+<button class="tab" onclick="switchTab(1)">Analysis</button>
+<button class="tab" onclick="switchTab(2)">Phishing</button>
+<button class="tab" onclick="switchTab(3)">Logs</button>
+<button class="tab" onclick="switchTab(4)">Training</button>
+</div>
+<div class="container">
+<div id="tab0" class="tab-content active">
+<div class="grid">
+<div class="stat-card"><h3 id="threats">0</h3><p>Threats</p></div>
+<div class="stat-card"><h3 id="blocked">0</h3><p>Blocked</p></div>
+<div class="stat-card"><h3 id="analyzed">0</h3><p>Analyzed</p></div>
+</div>
+<div class="card"><h3>Live Feed</h3><div id="feed"><p>No threats detected.</p></div></div>
+</div>
+<div id="tab1" class="tab-content">
+<div class="card">
+<h3>Upload File</h3>
+<input type="file" id="fileInput" accept=".csv,.pcap" onchange="analyzeFile()" class="form-control">
+<div id="fileResult"></div>
+</div>
+</div>
+<div id="tab2" class="tab-content">
+<div class="card">
+<h3>URL Check</h3>
+<input type="url" id="urlInput" class="form-control" placeholder="https://example.com">
+<button class="btn" onclick="checkURL()">Analyze</button>
+<div id="urlResult"></div>
+</div>
+<div class="card">
+<h3>Email Check</h3>
+<textarea id="emailInput" class="form-control" rows="5" placeholder="Paste email..."></textarea>
+<button class="btn" onclick="checkEmail()">Analyze</button>
+<div id="emailResult"></div>
+</div>
+</div>
+<div id="tab3" class="tab-content">
+<div class="card">
+<h3>Log Analysis</h3>
+<textarea id="logInput" class="form-control" rows="8" placeholder="Paste logs..."></textarea>
+<button class="btn" onclick="analyzeLogs()">Analyze</button>
+<div id="logResult"></div>
+</div>
+</div>
+<div id="tab4" class="tab-content">
+<div class="card">
+<h3>Train Model</h3>
+<label>Epochs</label>
+<input type="number" id="epochs" class="form-control" value="10">
+<button class="btn" onclick="train()">Start Training</button>
+<div id="trainResult"></div>
+</div>
+</div>
+</div>
+<script>
+let stats = {threats:0, blocked:0, analyzed:0};
+function switchTab(i) {
+document.querySelectorAll('.tab-content').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+}
+async function analyzeFile() {
+const file = document.getElementById('fileInput').files[0];
+if(!file) return;
+const formData = new FormData();
+formData.append('file', file);
+document.getElementById('fileResult').innerHTML = '<p>Analyzing...</p>';
+try {
+const res = await fetch('/api/analyze_traffic', {method:'POST', body:formData});
+const data = await res.json();
+stats.analyzed++;
+document.getElementById('analyzed').textContent = stats.analyzed;
+document.getElementById('fileResult').innerHTML = `<p>Complete! Samples: ${data.total_samples||0}</p>`;
+} catch(e) {
+document.getElementById('fileResult').innerHTML = `<p>Error: ${e.message}</p>`;
+}
+}
+async function checkURL() {
+const url = document.getElementById('urlInput').value;
+if(!url) return;
+try {
+const res = await fetch('/api/phishing/url', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({url})});
+const data = await res.json();
+document.getElementById('urlResult').innerHTML = `<p>${data.is_phishing?'⚠️ Suspicious':'✅ Safe'} - Risk ${data.risk_score}/100</p>`;
+} catch(e) {
+document.getElementById('urlResult').innerHTML = `<p>Error: ${e.message}</p>`;
+}
+}
+async function checkEmail() {
+const content = document.getElementById('emailInput').value;
+if(!content) return;
+try {
+const res = await fetch('/api/phishing/email', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({content})});
+const data = await res.json();
+document.getElementById('emailResult').innerHTML = `<p>${data.is_phishing?'⚠️ Suspicious':'✅ Safe'} - Risk ${data.risk_score}/100</p>`;
+} catch(e) {
+document.getElementById('emailResult').innerHTML = `<p>Error: ${e.message}</p>`;
+}
+}
+async function analyzeLogs() {
+const logs = document.getElementById('logInput').value.split('\n').filter(l=>l.trim());
+if(!logs.length) return;
+try {
+const res = await fetch('/api/logs/ingest', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({logs})});
+const data = await res.json();
+document.getElementById('logResult').innerHTML = `<p>Complete! Events: ${data.events.length}</p>`;
+} catch(e) {
+document.getElementById('logResult').innerHTML = `<p>Error: ${e.message}</p>`;
+}
+}
+async function train() {
+const epochs = parseInt(document.getElementById('epochs').value);
+try {
+const res = await fetch('/api/train', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({dataset:'iot23',epochs,batch_size:64,use_arnn:true})});
+const data = await res.json();
+document.getElementById('trainResult').innerHTML = `<p>✓ Complete! Accuracy: ${(data.val_acc*100).toFixed(2)}%</p>`;
+} catch(e) {
+document.getElementById('trainResult').innerHTML = `<p>Error: ${e.message}</p>`;
+}
+}
+const es = new EventSource('/events');
+es.onmessage = e => {
+const d = JSON.parse(e.data);
+stats.threats++;
+document.getElementById('threats').textContent = stats.threats;
+};
+</script>
+</body>
+</html>
