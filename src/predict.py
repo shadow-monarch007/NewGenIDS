@@ -21,15 +21,25 @@ from src.model import IDSModel, NextGenIDS
 from src.data_loader import load_scaler_from_json
 
 
-# Attack type mapping (0-indexed based on training)
-ATTACK_TYPES = {
+# Attack type mappings - different checkpoints use different class counts
+ATTACK_TYPES_BINARY = {
+    0: "Normal",
+    1: "Attack"  # Binary classification: Normal vs Attack
+}
+
+ATTACK_TYPES_MULTICLASS = {
     0: "Normal",
     1: "DDoS",
     2: "Port_Scan", 
     3: "Malware_C2",
     4: "Brute_Force",
-    5: "SQL_Injection"
+    5: "SQL_Injection",
+    6: "Botnet",
+    7: "Reconnaissance"
 }
+
+# Default mapping (will be selected based on num_classes in model)
+ATTACK_TYPES = ATTACK_TYPES_MULTICLASS  # For backward compatibility
 
 
 def load_model_and_scaler(checkpoint_path: str, dataset_name: str = "iot23", device: str = "cpu"):
@@ -90,9 +100,19 @@ def preprocess_traffic_data(df: pd.DataFrame, scaler, expected_features: int) ->
         # Truncate
         X = X[:, :expected_features]
     
-    # Normalize using training scaler
+    # Normalize using training scaler - handle dimension mismatch
     if scaler is not None:
-        X = scaler.transform(X)
+        try:
+            # Check if scaler dimensions match
+            scaler_features = len(scaler.mean_) if hasattr(scaler, 'mean_') else expected_features
+            if scaler_features == X.shape[1]:
+                X = scaler.transform(X)
+            else:
+                # Scaler dimension mismatch - use simple standardization
+                X = (X - X.mean(axis=0)) / (X.std(axis=0) + 1e-8)
+        except Exception:
+            # Fallback to simple standardization
+            X = (X - X.mean(axis=0)) / (X.std(axis=0) + 1e-8)
     
     return X
 
@@ -122,6 +142,12 @@ def predict_traffic(csv_path: str, checkpoint_path: str, dataset_name: str = "io
     # Load model and scaler
     model, scaler, input_dim, num_classes = load_model_and_scaler(checkpoint_path, dataset_name, device)
     
+    # Select appropriate attack type mapping based on model's num_classes
+    if num_classes == 2:
+        attack_type_map = ATTACK_TYPES_BINARY
+    else:
+        attack_type_map = ATTACK_TYPES_MULTICLASS
+    
     # Load and preprocess traffic data
     df = pd.read_csv(csv_path)
     X = preprocess_traffic_data(df, scaler, input_dim)
@@ -148,8 +174,8 @@ def predict_traffic(csv_path: str, checkpoint_path: str, dataset_name: str = "io
                 pred_class = int(pred_classes[j])
                 confidence = float(confidences[j])
                 
-                # Get attack type name
-                attack_type = ATTACK_TYPES.get(pred_class, f"Unknown_{pred_class}")
+                # Get attack type name based on model's class count
+                attack_type = attack_type_map.get(pred_class, f"Unknown_{pred_class}")
                 
                 # Extract features from sequence for explanation
                 # Use the last row of the sequence as representative

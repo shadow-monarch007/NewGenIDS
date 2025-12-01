@@ -117,10 +117,10 @@ class MLPhishingDetector:
             try:
                 with open(self.model_path, 'rb') as f:
                     self.model = pickle.load(f)
-                print(f"✓ Loaded phishing detection model from {self.model_path}")
+                print(f"[OK] Loaded phishing detection model from {self.model_path}")
                 return
             except:
-                print(f"⚠️  Failed to load model, training new one...")
+                print(f"[WARN] Failed to load model, training new one...")
         
         # Train new model
         X, y = self._create_training_data()

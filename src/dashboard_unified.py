@@ -53,7 +53,16 @@ UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads')
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 CHECKPOINT_DIR = os.path.join(BASE_DIR, 'checkpoints')
 RESULTS_DIR = os.path.join(BASE_DIR, 'results')
-CHECKPOINT_PATH = os.path.join(CHECKPOINT_DIR, 'best_iot23.pt')
+
+# Select best available checkpoint (prefer multi-class for better attack classification)
+_multiclass_ckpt = os.path.join(CHECKPOINT_DIR, 'best_multiclass.pt')
+_iot23_ckpt = os.path.join(CHECKPOINT_DIR, 'best_iot23.pt')
+if os.path.exists(_multiclass_ckpt):
+    CHECKPOINT_PATH = _multiclass_ckpt
+    DATASET_NAME = 'multiclass'
+else:
+    CHECKPOINT_PATH = _iot23_ckpt
+    DATASET_NAME = 'iot23'
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -248,7 +257,7 @@ def api_evaluate():
         if not os.path.exists(ckpt_path):
             return jsonify({'success': False, 'error': f'Checkpoint not found: {checkpoint_name}'}), 400
 
-        _, _, test_loader, input_dim, num_classes = create_dataloaders(
+        _, _, test_loader, data_input_dim, data_num_classes = create_dataloaders(
             dataset_name=dataset_name,
             batch_size=batch_size,
             seq_len=seq_len,
@@ -258,6 +267,12 @@ def api_evaluate():
 
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
         ckpt = torch.load(ckpt_path, map_location=device)
+        
+        # Use checkpoint metadata for model dimensions (not data dimensions)
+        meta = ckpt.get('meta', {})
+        input_dim = meta.get('input_dim', data_input_dim)
+        num_classes = meta.get('num_classes', data_num_classes)
+        
         state_dict_keys = list(ckpt['state_dict'].keys())
         uses_arnn = any('arnn' in k or 'slstm_cnn' in k for k in state_dict_keys)
         model = NextGenIDS(input_size=input_dim, hidden_size=128, num_layers=2, num_classes=num_classes).to(device) if uses_arnn else IDSModel(input_size=input_dim, hidden_size=128, num_layers=2, num_classes=num_classes).to(device)
@@ -334,7 +349,7 @@ def api_analyze_traffic():
         if not os.path.exists(CHECKPOINT_PATH):
             return jsonify({'success': False, 'error': f'Model checkpoint missing: {CHECKPOINT_PATH}'}), 400
 
-        preds = predict_traffic(csv_path=csv_path, checkpoint_path=CHECKPOINT_PATH, dataset_name='iot23', device='cpu', seq_len=100)
+        preds = predict_traffic(csv_path=csv_path, checkpoint_path=CHECKPOINT_PATH, dataset_name=DATASET_NAME, device='cpu', seq_len=100)
 
         # Cleanup
         try:

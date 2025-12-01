@@ -1,0 +1,2720 @@
+[
+  {
+    "sequence_idx": 0,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9147756695747375,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.65771702597395,
+      "packet_size": 228.4407505775094,
+      "byte_rate": 115.64879025346914,
+      "flow_duration": 33.107534317277185,
+      "entropy": 6.76879700813512,
+      "src_port": 62628.0,
+      "dst_port": 1337.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 1,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.976290225982666,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.3317848012022826,
+      "packet_size": 269.8912871061997,
+      "byte_rate": 167.25270661159766,
+      "flow_duration": 45.20985240254101,
+      "entropy": 6.435655608627714,
+      "src_port": 52591.0,
+      "dst_port": 1337.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 2,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9248101711273193,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 262.55496711211595,
+      "byte_rate": 441.5986647590564,
+      "flow_duration": 31.015853581730408,
+      "entropy": 7.108422178370011,
+      "src_port": 53080.0,
+      "dst_port": 8080.0,
+      "total_packets": 14.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 3,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9221441745758057,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.253550166497368,
+      "packet_size": 207.271150808744,
+      "byte_rate": 698.8088875435978,
+      "flow_duration": 22.889632295448493,
+      "entropy": 6.575326963369553,
+      "src_port": 54563.0,
+      "dst_port": 8080.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 4,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9608078598976135,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.706330619538651,
+      "packet_size": 269.86470303408186,
+      "byte_rate": 693.4131139921767,
+      "flow_duration": 24.950851577057723,
+      "entropy": 7.29985449688009,
+      "src_port": 62288.0,
+      "dst_port": 8443.0,
+      "total_packets": 15.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 5,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9527227878570557,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.4898161139681574,
+      "packet_size": 184.659118606961,
+      "byte_rate": 658.7431524154872,
+      "flow_duration": 36.564471869104686,
+      "entropy": 6.163956853316319,
+      "src_port": 63319.0,
+      "dst_port": 1337.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 6,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9265071749687195,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 135.44766587424647,
+      "byte_rate": 396.9809032963921,
+      "flow_duration": 10.416590842130592,
+      "entropy": 5.926104614071201,
+      "src_port": 50068.0,
+      "dst_port": 4443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 7,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9570171236991882,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.771112806802951,
+      "packet_size": 296.0437209605138,
+      "byte_rate": 728.852633223422,
+      "flow_duration": 19.57317723703908,
+      "entropy": 5.49983386187257,
+      "src_port": 60289.0,
+      "dst_port": 4443.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 8,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8892912864685059,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.3269075608219063,
+      "packet_size": 226.6404143228385,
+      "byte_rate": 313.78588474203127,
+      "flow_duration": 32.126460761973405,
+      "entropy": 6.447294371260796,
+      "src_port": 49950.0,
+      "dst_port": 1337.0,
+      "total_packets": 27.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 9,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.6531137824058533,
+    "severity": "High",
+    "features": {
+      "packet_rate": 2.5354487950852502,
+      "packet_size": 123.268462473004,
+      "byte_rate": 670.6786877717752,
+      "flow_duration": 12.933304226252517,
+      "entropy": 5.882679238321456,
+      "src_port": 54123.0,
+      "dst_port": 1337.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 10,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9071159362792969,
+    "severity": "None",
+    "features": {
+      "packet_rate": 4.202170466567038,
+      "packet_size": 277.9524289318681,
+      "byte_rate": 165.0847360423889,
+      "flow_duration": 26.87482120865136,
+      "entropy": 5.875598433755159,
+      "src_port": 50912.0,
+      "dst_port": 1337.0,
+      "total_packets": 24.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 11,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9795732498168945,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 162.8288757445608,
+      "byte_rate": 264.57755122255634,
+      "flow_duration": 25.21734964342484,
+      "entropy": 7.017159708200911,
+      "src_port": 59677.0,
+      "dst_port": 8080.0,
+      "total_packets": 11.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 12,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9957306981086731,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.2033791201876758,
+      "packet_size": 173.70588711374333,
+      "byte_rate": 830.5230121941127,
+      "flow_duration": 38.774485220756674,
+      "entropy": 5.638949187663285,
+      "src_port": 52427.0,
+      "dst_port": 4443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 13,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.996557891368866,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.8055204064515509,
+      "packet_size": 251.06915695416023,
+      "byte_rate": 459.2330772341591,
+      "flow_duration": 27.497176668808,
+      "entropy": 6.55177923624866,
+      "src_port": 64171.0,
+      "dst_port": 4443.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 14,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9575278759002686,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.291678361358942,
+      "packet_size": 268.08535568283475,
+      "byte_rate": 363.8060281167101,
+      "flow_duration": 41.86691382603047,
+      "entropy": 6.458383644864671,
+      "src_port": 65035.0,
+      "dst_port": 4443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 15,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9568976759910583,
+    "severity": "None",
+    "features": {
+      "packet_rate": 5.555617129553276,
+      "packet_size": 149.96304857793683,
+      "byte_rate": 720.5517417331307,
+      "flow_duration": 30.78873023238061,
+      "entropy": 6.546065574165815,
+      "src_port": 49970.0,
+      "dst_port": 1337.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 16,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8040869235992432,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.247085187099628,
+      "packet_size": 273.5495381013389,
+      "byte_rate": 743.4743247114544,
+      "flow_duration": 47.764511308092665,
+      "entropy": 7.192051234372988,
+      "src_port": 59512.0,
+      "dst_port": 8080.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 17,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9119808673858643,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 243.71183982047205,
+      "byte_rate": 413.3438383801555,
+      "flow_duration": 16.12511035608229,
+      "entropy": 6.087154348194558,
+      "src_port": 54192.0,
+      "dst_port": 1337.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 18,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.6500177383422852,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.6544786257487771,
+      "packet_size": 160.01255940306794,
+      "byte_rate": 555.6926905884274,
+      "flow_duration": 46.17126841267978,
+      "entropy": 7.192474243549175,
+      "src_port": 65267.0,
+      "dst_port": 8443.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 19,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7790729999542236,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.2251365137620156,
+      "packet_size": 187.7046867858248,
+      "byte_rate": 527.3814850814287,
+      "flow_duration": 25.888728437706103,
+      "entropy": 5.619897471926475,
+      "src_port": 61079.0,
+      "dst_port": 8443.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 20,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7147361040115356,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.7215854776857897,
+      "packet_size": 275.8067948286779,
+      "byte_rate": 100.0,
+      "flow_duration": 44.739497012264096,
+      "entropy": 6.825370518533232,
+      "src_port": 65175.0,
+      "dst_port": 4443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 21,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.7991578578948975,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.376884703298933,
+      "packet_size": 121.97191986958532,
+      "byte_rate": 220.8279842472545,
+      "flow_duration": 41.85234699885165,
+      "entropy": 7.238186689435555,
+      "src_port": 52217.0,
+      "dst_port": 1337.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 22,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9188123345375061,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.958186631995402,
+      "packet_size": 269.03571879461094,
+      "byte_rate": 688.4508828364153,
+      "flow_duration": 5.0,
+      "entropy": 5.0,
+      "src_port": 52411.0,
+      "dst_port": 8443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 23,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9016966819763184,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.1665145757528688,
+      "packet_size": 242.32035639182624,
+      "byte_rate": 333.47915019145,
+      "flow_duration": 34.7916821031984,
+      "entropy": 6.48230353743496,
+      "src_port": 50058.0,
+      "dst_port": 8443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 24,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9535935521125793,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.6399427774256616,
+      "packet_size": 225.457038113535,
+      "byte_rate": 605.9675792130128,
+      "flow_duration": 39.97619762807898,
+      "entropy": 6.441634677541957,
+      "src_port": 61452.0,
+      "dst_port": 1337.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 25,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8736737966537476,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.7606416899372503,
+      "packet_size": 206.5847844285504,
+      "byte_rate": 552.6080902691067,
+      "flow_duration": 43.28592736671117,
+      "entropy": 6.535924254602722,
+      "src_port": 49754.0,
+      "dst_port": 8080.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 26,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8682582974433899,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.957811083830422,
+      "packet_size": 298.5068991231239,
+      "byte_rate": 743.0865540255763,
+      "flow_duration": 18.233628142205774,
+      "entropy": 7.35577896049505,
+      "src_port": 53447.0,
+      "dst_port": 1337.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 27,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8637921810150146,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.0488732151944165,
+      "packet_size": 305.89618003524515,
+      "byte_rate": 227.24170231842868,
+      "flow_duration": 35.9034289701423,
+      "entropy": 6.118184566835712,
+      "src_port": 59977.0,
+      "dst_port": 1337.0,
+      "total_packets": 13.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 28,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.778620719909668,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.2348505377345376,
+      "packet_size": 169.23851249911726,
+      "byte_rate": 578.8411681922504,
+      "flow_duration": 31.95073678665728,
+      "entropy": 5.907745734910256,
+      "src_port": 59135.0,
+      "dst_port": 8080.0,
+      "total_packets": 14.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 29,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.6528038382530212,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.6037889879785596,
+      "packet_size": 230.61023936158333,
+      "byte_rate": 486.9171083729112,
+      "flow_duration": 34.31408966966325,
+      "entropy": 6.539561341379588,
+      "src_port": 52679.0,
+      "dst_port": 4443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 30,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.5351046919822693,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.4564331597534168,
+      "packet_size": 293.7188248588916,
+      "byte_rate": 342.0451318650105,
+      "flow_duration": 39.989364865930185,
+      "entropy": 7.062156720653004,
+      "src_port": 53695.0,
+      "dst_port": 4443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 31,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8628098964691162,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.6612259791101176,
+      "packet_size": 160.74777094999948,
+      "byte_rate": 340.6407179441524,
+      "flow_duration": 41.56709852726434,
+      "entropy": 6.77931744155241,
+      "src_port": 50963.0,
+      "dst_port": 4443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 32,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9313580393791199,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.776140767382475,
+      "packet_size": 212.15697871559385,
+      "byte_rate": 545.4961761651327,
+      "flow_duration": 23.442570452355287,
+      "entropy": 6.517160998415527,
+      "src_port": 61255.0,
+      "dst_port": 8080.0,
+      "total_packets": 27.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 33,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9122851490974426,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.256196246193049,
+      "packet_size": 250.19377211412456,
+      "byte_rate": 625.9340342103583,
+      "flow_duration": 32.65419331846657,
+      "entropy": 6.385384498593916,
+      "src_port": 58184.0,
+      "dst_port": 8443.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 34,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9199982285499573,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 100.0,
+      "byte_rate": 512.719256508859,
+      "flow_duration": 30.41135317212128,
+      "entropy": 5.496534835509382,
+      "src_port": 60486.0,
+      "dst_port": 8080.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 35,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8306482434272766,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.6575714066054277,
+      "packet_size": 241.42776143489448,
+      "byte_rate": 518.9428503714557,
+      "flow_duration": 27.60647377730345,
+      "entropy": 6.7929312643086055,
+      "src_port": 62029.0,
+      "dst_port": 1337.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 36,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.7938588261604309,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.1602941299200435,
+      "packet_size": 145.5783988294801,
+      "byte_rate": 400.3011191927953,
+      "flow_duration": 28.562247888309592,
+      "entropy": 6.852670291479293,
+      "src_port": 57115.0,
+      "dst_port": 8080.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 37,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.689960241317749,
+    "severity": "High",
+    "features": {
+      "packet_rate": 2.648306042701211,
+      "packet_size": 209.61656824778345,
+      "byte_rate": 413.5628365900552,
+      "flow_duration": 31.959872420566366,
+      "entropy": 6.153833215923367,
+      "src_port": 54401.0,
+      "dst_port": 8443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 38,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.6206582188606262,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.3734331727607927,
+      "packet_size": 257.21724254459093,
+      "byte_rate": 341.5059283284205,
+      "flow_duration": 23.980183975327336,
+      "entropy": 6.267640066603543,
+      "src_port": 64376.0,
+      "dst_port": 8443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 39,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9031169414520264,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.6212122989745046,
+      "packet_size": 100.0,
+      "byte_rate": 396.27966966099433,
+      "flow_duration": 38.83036778530881,
+      "entropy": 5.975885489519758,
+      "src_port": 59434.0,
+      "dst_port": 1337.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 40,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.732181966304779,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.4262957301103751,
+      "packet_size": 239.2929443871948,
+      "byte_rate": 618.9351183669995,
+      "flow_duration": 42.693082882918496,
+      "entropy": 6.934061736394649,
+      "src_port": 53767.0,
+      "dst_port": 4443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 41,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9261500835418701,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.2930802140940378,
+      "packet_size": 301.91644923154155,
+      "byte_rate": 641.2811248867697,
+      "flow_duration": 21.794234444141043,
+      "entropy": 6.317066859652812,
+      "src_port": 58380.0,
+      "dst_port": 8443.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 42,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8483812212944031,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.271908780738157,
+      "packet_size": 173.3349500167068,
+      "byte_rate": 244.8248768387725,
+      "flow_duration": 43.18329887939122,
+      "entropy": 6.425347666338995,
+      "src_port": 58068.0,
+      "dst_port": 8443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 43,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8966850638389587,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.828639379424876,
+      "packet_size": 228.8345073392062,
+      "byte_rate": 320.7126649436803,
+      "flow_duration": 21.813065757738592,
+      "entropy": 6.814632058171965,
+      "src_port": 55918.0,
+      "dst_port": 8443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 44,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8697065114974976,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.253726978368896,
+      "packet_size": 266.7643165349694,
+      "byte_rate": 357.92039526616173,
+      "flow_duration": 38.97786911689785,
+      "entropy": 6.663487026714729,
+      "src_port": 58331.0,
+      "dst_port": 1337.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 45,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7333223819732666,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 120.35274758950128,
+      "byte_rate": 487.19262764671686,
+      "flow_duration": 43.16478810590568,
+      "entropy": 6.781640567383513,
+      "src_port": 49954.0,
+      "dst_port": 8443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 46,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.877140462398529,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.2744844515196827,
+      "packet_size": 237.86848792668764,
+      "byte_rate": 163.36943879271928,
+      "flow_duration": 29.05489303920161,
+      "entropy": 6.587418653017749,
+      "src_port": 51734.0,
+      "dst_port": 4443.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 47,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9691014289855957,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.5435342274659134,
+      "packet_size": 251.18831162988903,
+      "byte_rate": 324.2185904523318,
+      "flow_duration": 21.89502258016221,
+      "entropy": 6.59855916756135,
+      "src_port": 55597.0,
+      "dst_port": 1337.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 48,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.983656644821167,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.3417398572767705,
+      "packet_size": 231.93101099683835,
+      "byte_rate": 222.88369739558544,
+      "flow_duration": 24.113170022883704,
+      "entropy": 6.593818927182126,
+      "src_port": 52989.0,
+      "dst_port": 4443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.933002"
+  },
+  {
+    "sequence_idx": 49,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9958661794662476,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.330067810800516,
+      "packet_size": 204.33113461025607,
+      "byte_rate": 580.0964268420232,
+      "flow_duration": 33.61856865648856,
+      "entropy": 6.726457879674506,
+      "src_port": 57870.0,
+      "dst_port": 8443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 50,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9884989857673645,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.419770553898899,
+      "packet_size": 149.9793609096937,
+      "byte_rate": 494.0650115335471,
+      "flow_duration": 49.64654412409964,
+      "entropy": 6.750753545857006,
+      "src_port": 50817.0,
+      "dst_port": 8443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 51,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9949806332588196,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.9069729222069252,
+      "packet_size": 269.57116767681214,
+      "byte_rate": 407.49049491152607,
+      "flow_duration": 13.0726715896329,
+      "entropy": 5.887646019626974,
+      "src_port": 65084.0,
+      "dst_port": 4443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 52,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9982677698135376,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.2339601529848787,
+      "packet_size": 201.7251782615829,
+      "byte_rate": 287.3445438463957,
+      "flow_duration": 31.002419648119776,
+      "entropy": 6.201402874357384,
+      "src_port": 58482.0,
+      "dst_port": 1337.0,
+      "total_packets": 26.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 53,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9981474876403809,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.6849038564995658,
+      "packet_size": 154.80597936882023,
+      "byte_rate": 410.58070974216105,
+      "flow_duration": 29.11927850902988,
+      "entropy": 6.3983208682490025,
+      "src_port": 57803.0,
+      "dst_port": 1337.0,
+      "total_packets": 14.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 54,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9973245859146118,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.917915741672464,
+      "packet_size": 184.09870847927155,
+      "byte_rate": 387.0615768484157,
+      "flow_duration": 25.434782382318904,
+      "entropy": 6.725909128247775,
+      "src_port": 56127.0,
+      "dst_port": 4443.0,
+      "total_packets": 15.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 55,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9980494976043701,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.226950774987949,
+      "packet_size": 218.41927456673383,
+      "byte_rate": 826.9333105039743,
+      "flow_duration": 29.192180582713853,
+      "entropy": 7.298711681413121,
+      "src_port": 51704.0,
+      "dst_port": 8443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 56,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9879174828529358,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.726161159903547,
+      "packet_size": 121.94075215578948,
+      "byte_rate": 699.403942316354,
+      "flow_duration": 24.578031781509225,
+      "entropy": 6.093388484183349,
+      "src_port": 56627.0,
+      "dst_port": 8080.0,
+      "total_packets": 12.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 57,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9553651809692383,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.036967520549108,
+      "packet_size": 200.89651762920587,
+      "byte_rate": 361.858414814216,
+      "flow_duration": 42.43155411862408,
+      "entropy": 6.939325837690094,
+      "src_port": 62371.0,
+      "dst_port": 4443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 58,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7339529395103455,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.121758610309429,
+      "packet_size": 179.15613914710053,
+      "byte_rate": 533.0390681904914,
+      "flow_duration": 43.42493806666725,
+      "entropy": 6.215526743859785,
+      "src_port": 63426.0,
+      "dst_port": 4443.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.943856"
+  },
+  {
+    "sequence_idx": 59,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.7876234650611877,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.0332858278573496,
+      "packet_size": 266.80132406829944,
+      "byte_rate": 688.8417293171992,
+      "flow_duration": 30.881352711470225,
+      "entropy": 7.185258417822327,
+      "src_port": 61764.0,
+      "dst_port": 4443.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:06.945591"
+  },
+  {
+    "sequence_idx": 60,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.990798830986023,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.9782939689619576,
+      "packet_size": 106.25547013561356,
+      "byte_rate": 361.7971625407424,
+      "flow_duration": 28.588549865137097,
+      "entropy": 7.456171965898477,
+      "src_port": 62018.0,
+      "dst_port": 8443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.945591"
+  },
+  {
+    "sequence_idx": 61,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9742109179496765,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.4357126404496747,
+      "packet_size": 246.9378821251242,
+      "byte_rate": 216.57785180534603,
+      "flow_duration": 25.069633273729348,
+      "entropy": 5.625993153185669,
+      "src_port": 51960.0,
+      "dst_port": 1337.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.946311"
+  },
+  {
+    "sequence_idx": 62,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9073440432548523,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.448820091070812,
+      "packet_size": 270.8547412801257,
+      "byte_rate": 140.62829581347523,
+      "flow_duration": 30.902813377526765,
+      "entropy": 6.336833217146316,
+      "src_port": 64686.0,
+      "dst_port": 8443.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.946311"
+  },
+  {
+    "sequence_idx": 63,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9646245837211609,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.2221981575557725,
+      "packet_size": 108.14556814260688,
+      "byte_rate": 754.4533839829215,
+      "flow_duration": 48.478310288676255,
+      "entropy": 5.324877658991226,
+      "src_port": 60242.0,
+      "dst_port": 4443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.946311"
+  },
+  {
+    "sequence_idx": 64,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9373764395713806,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.6065738580746887,
+      "packet_size": 114.14087570964622,
+      "byte_rate": 461.7875237060165,
+      "flow_duration": 28.962657637986418,
+      "entropy": 5.655081987720448,
+      "src_port": 54785.0,
+      "dst_port": 8443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 65,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8104183077812195,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 4.243591723768047,
+      "packet_size": 289.295002328324,
+      "byte_rate": 558.2650465749398,
+      "flow_duration": 21.6056760197374,
+      "entropy": 5.686237379873148,
+      "src_port": 60587.0,
+      "dst_port": 8443.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 66,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.5668603181838989,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.420986305184727,
+      "packet_size": 154.78139756985337,
+      "byte_rate": 385.152524936188,
+      "flow_duration": 26.02238108653149,
+      "entropy": 6.812032987405644,
+      "src_port": 61412.0,
+      "dst_port": 4443.0,
+      "total_packets": 15.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 67,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.5688905715942383,
+    "severity": "High",
+    "features": {
+      "packet_rate": 4.469407414008624,
+      "packet_size": 354.7414560244225,
+      "byte_rate": 246.42021630206315,
+      "flow_duration": 37.5346996176888,
+      "entropy": 6.718491822163552,
+      "src_port": 64447.0,
+      "dst_port": 8443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 68,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9520129561424255,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.9032270565448168,
+      "packet_size": 109.7079982239917,
+      "byte_rate": 283.7398350321804,
+      "flow_duration": 22.82263295952395,
+      "entropy": 6.900622227330524,
+      "src_port": 63989.0,
+      "dst_port": 8080.0,
+      "total_packets": 26.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 69,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9193338751792908,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.9352474030431264,
+      "packet_size": 208.50237024935603,
+      "byte_rate": 231.7930415414782,
+      "flow_duration": 29.66293905337476,
+      "entropy": 6.8039582591874606,
+      "src_port": 55248.0,
+      "dst_port": 8443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 70,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7994552254676819,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.366040141308624,
+      "packet_size": 198.83031313736413,
+      "byte_rate": 669.9988828937751,
+      "flow_duration": 34.72883135162739,
+      "entropy": 6.742532410733123,
+      "src_port": 63821.0,
+      "dst_port": 8443.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 71,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.825456440448761,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.931060203795247,
+      "packet_size": 189.59021162175213,
+      "byte_rate": 798.5122316664101,
+      "flow_duration": 23.58137143946973,
+      "entropy": 6.555928525672341,
+      "src_port": 59675.0,
+      "dst_port": 1337.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 72,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8728829622268677,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.018575945162973,
+      "packet_size": 223.14811803528912,
+      "byte_rate": 507.4487924950045,
+      "flow_duration": 12.355942792349484,
+      "entropy": 6.434559847327309,
+      "src_port": 61914.0,
+      "dst_port": 1337.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 73,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8661079406738281,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.1330292501719816,
+      "packet_size": 226.03232123645336,
+      "byte_rate": 196.44018135992025,
+      "flow_duration": 19.28614536146898,
+      "entropy": 7.009798866022388,
+      "src_port": 62517.0,
+      "dst_port": 4443.0,
+      "total_packets": 12.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 74,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9574756622314453,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.086718666755961,
+      "packet_size": 191.6170508685448,
+      "byte_rate": 599.3168381671217,
+      "flow_duration": 21.412334911270264,
+      "entropy": 6.50613894451202,
+      "src_port": 62921.0,
+      "dst_port": 4443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.964972"
+  },
+  {
+    "sequence_idx": 75,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9674930572509766,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.1846618901623578,
+      "packet_size": 149.2913028086365,
+      "byte_rate": 752.9969329985086,
+      "flow_duration": 27.711726941433582,
+      "entropy": 6.762589490794299,
+      "src_port": 63042.0,
+      "dst_port": 1337.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977083"
+  },
+  {
+    "sequence_idx": 76,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.946430504322052,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.7650565713293003,
+      "packet_size": 252.38801821206897,
+      "byte_rate": 694.3333534966787,
+      "flow_duration": 30.44299661395277,
+      "entropy": 5.33485733298393,
+      "src_port": 62883.0,
+      "dst_port": 8080.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977404"
+  },
+  {
+    "sequence_idx": 77,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9433440566062927,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.961276366973766,
+      "packet_size": 231.40263315414185,
+      "byte_rate": 494.1737903030012,
+      "flow_duration": 38.23701297377112,
+      "entropy": 5.91246545957046,
+      "src_port": 61029.0,
+      "dst_port": 8443.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977404"
+  },
+  {
+    "sequence_idx": 78,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8717788457870483,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.589876890242934,
+      "packet_size": 205.7291845308037,
+      "byte_rate": 453.1035526746235,
+      "flow_duration": 17.72743991335293,
+      "entropy": 6.990112126822632,
+      "src_port": 57975.0,
+      "dst_port": 8080.0,
+      "total_packets": 14.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 79,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8877450823783875,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.7459802609830244,
+      "packet_size": 229.818374120868,
+      "byte_rate": 492.5667357580539,
+      "flow_duration": 36.78286870707175,
+      "entropy": 6.165782533283408,
+      "src_port": 62142.0,
+      "dst_port": 8080.0,
+      "total_packets": 28.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 80,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9743490219116211,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.9410209153742155,
+      "packet_size": 238.4470725045565,
+      "byte_rate": 745.0498009953432,
+      "flow_duration": 26.290764888501982,
+      "entropy": 5.8023212410837965,
+      "src_port": 51608.0,
+      "dst_port": 1337.0,
+      "total_packets": 28.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 81,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9962253570556641,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.1543337072841813,
+      "packet_size": 161.913397825934,
+      "byte_rate": 652.0730855642764,
+      "flow_duration": 12.144527011181523,
+      "entropy": 6.820646165740685,
+      "src_port": 58325.0,
+      "dst_port": 4443.0,
+      "total_packets": 28.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 82,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9908208250999451,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.7165239293654666,
+      "packet_size": 228.0340186740903,
+      "byte_rate": 422.8486000753396,
+      "flow_duration": 30.13573659384205,
+      "entropy": 6.500667162639214,
+      "src_port": 54575.0,
+      "dst_port": 8443.0,
+      "total_packets": 15.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 83,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9857679009437561,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.45386015695536,
+      "packet_size": 172.34821372408288,
+      "byte_rate": 417.81694484192064,
+      "flow_duration": 43.16267551499968,
+      "entropy": 6.296530414343208,
+      "src_port": 63398.0,
+      "dst_port": 4443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 84,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9486404061317444,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.755612385101446,
+      "packet_size": 240.10166782934,
+      "byte_rate": 403.660990251863,
+      "flow_duration": 38.831145516584826,
+      "entropy": 7.254555484370545,
+      "src_port": 61998.0,
+      "dst_port": 8080.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 85,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9152057766914368,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.208954452133154,
+      "packet_size": 190.38002067883843,
+      "byte_rate": 287.0734732895397,
+      "flow_duration": 29.237295889779325,
+      "entropy": 7.1687170539577085,
+      "src_port": 53469.0,
+      "dst_port": 8080.0,
+      "total_packets": 28.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 86,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8019120693206787,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.826647446537073,
+      "packet_size": 230.585978684086,
+      "byte_rate": 770.3676471490771,
+      "flow_duration": 41.25770616128751,
+      "entropy": 6.406081400192465,
+      "src_port": 50708.0,
+      "dst_port": 4443.0,
+      "total_packets": 10.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 87,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8631899952888489,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.4951244101964765,
+      "packet_size": 178.31023501452387,
+      "byte_rate": 342.43525045071226,
+      "flow_duration": 31.92222680547305,
+      "entropy": 6.861187652409648,
+      "src_port": 51357.0,
+      "dst_port": 4443.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:06.977926"
+  },
+  {
+    "sequence_idx": 88,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8765312433242798,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.9634696503178564,
+      "packet_size": 233.18512179688364,
+      "byte_rate": 598.0552131333507,
+      "flow_duration": 39.81188827822438,
+      "entropy": 5.380648093880721,
+      "src_port": 61787.0,
+      "dst_port": 1337.0,
+      "total_packets": 24.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 89,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9309198260307312,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.84793671833875,
+      "packet_size": 151.06153854419958,
+      "byte_rate": 367.7144723364335,
+      "flow_duration": 13.383976650311984,
+      "entropy": 7.04667951644864,
+      "src_port": 62622.0,
+      "dst_port": 4443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 90,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9940914511680603,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.4720883506306324,
+      "packet_size": 201.8084439931731,
+      "byte_rate": 404.5552235933276,
+      "flow_duration": 17.50327184739735,
+      "entropy": 5.95670674563198,
+      "src_port": 62328.0,
+      "dst_port": 4443.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 91,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9846330881118774,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.6500191061181697,
+      "packet_size": 249.0316257554967,
+      "byte_rate": 477.22384665540574,
+      "flow_duration": 37.2903598557272,
+      "entropy": 5.773929032291585,
+      "src_port": 53107.0,
+      "dst_port": 1337.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 92,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9859578013420105,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.6010249113167903,
+      "packet_size": 223.36023286229624,
+      "byte_rate": 609.0484849668416,
+      "flow_duration": 45.39282494344823,
+      "entropy": 5.607367476079224,
+      "src_port": 58265.0,
+      "dst_port": 4443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 93,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9863888621330261,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.2957256262707504,
+      "packet_size": 209.60143667246055,
+      "byte_rate": 448.15522364290416,
+      "flow_duration": 34.17295730912506,
+      "entropy": 5.56872405511068,
+      "src_port": 62698.0,
+      "dst_port": 8080.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 94,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9893926382064819,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.999318590556805,
+      "packet_size": 290.178066982532,
+      "byte_rate": 272.1589656765336,
+      "flow_duration": 25.026631266241974,
+      "entropy": 7.0401627704502205,
+      "src_port": 55957.0,
+      "dst_port": 4443.0,
+      "total_packets": 11.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 95,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9985743761062622,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.210481160889687,
+      "packet_size": 251.1818434244461,
+      "byte_rate": 503.8162662158201,
+      "flow_duration": 21.494841414267107,
+      "entropy": 6.815572354642428,
+      "src_port": 49556.0,
+      "dst_port": 8443.0,
+      "total_packets": 26.0
+    },
+    "timestamp": "2025-12-01T11:42:06.979701"
+  },
+  {
+    "sequence_idx": 96,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9977551102638245,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.930189609822313,
+      "packet_size": 242.7769974626564,
+      "byte_rate": 346.665640161674,
+      "flow_duration": 26.84684836405192,
+      "entropy": 6.11707017869527,
+      "src_port": 62720.0,
+      "dst_port": 8080.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 97,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9903738498687744,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.8346751681372748,
+      "packet_size": 232.9013889458253,
+      "byte_rate": 808.7676613829062,
+      "flow_duration": 42.13636991716765,
+      "entropy": 6.927449518369104,
+      "src_port": 62116.0,
+      "dst_port": 1337.0,
+      "total_packets": 24.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 98,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9168201088905334,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 239.1348436123332,
+      "byte_rate": 448.0110995054822,
+      "flow_duration": 26.574729617126057,
+      "entropy": 6.202509285395415,
+      "src_port": 62028.0,
+      "dst_port": 8080.0,
+      "total_packets": 15.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 99,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9284255504608154,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.066848249641028,
+      "packet_size": 282.8551005276082,
+      "byte_rate": 366.4061323857729,
+      "flow_duration": 40.47761241387419,
+      "entropy": 6.661824720744312,
+      "src_port": 50772.0,
+      "dst_port": 1337.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 100,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.973021388053894,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.902077023395576,
+      "packet_size": 179.11656561395026,
+      "byte_rate": 894.9601599306686,
+      "flow_duration": 36.52573125454545,
+      "entropy": 6.258845486551054,
+      "src_port": 64045.0,
+      "dst_port": 8443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 101,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.5949743986129761,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.652709261846642,
+      "packet_size": 250.4701982637621,
+      "byte_rate": 647.7779404884946,
+      "flow_duration": 47.139258004269934,
+      "entropy": 6.440018435566353,
+      "src_port": 52104.0,
+      "dst_port": 8443.0,
+      "total_packets": 12.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 102,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.7103697061538696,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.039270736192324,
+      "packet_size": 217.8243944387388,
+      "byte_rate": 320.64517723915674,
+      "flow_duration": 32.002618715365074,
+      "entropy": 6.045901546116178,
+      "src_port": 57232.0,
+      "dst_port": 8080.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 103,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7671646475791931,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.1947012144120004,
+      "packet_size": 180.84412314330032,
+      "byte_rate": 341.8171880006792,
+      "flow_duration": 29.504036388179586,
+      "entropy": 6.120091185599469,
+      "src_port": 52270.0,
+      "dst_port": 4443.0,
+      "total_packets": 27.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 104,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8039616942405701,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.548944517766553,
+      "packet_size": 195.01374484793604,
+      "byte_rate": 594.8365962181363,
+      "flow_duration": 40.976721056802674,
+      "entropy": 6.7720480904763125,
+      "src_port": 56532.0,
+      "dst_port": 8080.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 105,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8905892372131348,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.6673852179425976,
+      "packet_size": 210.9577340773172,
+      "byte_rate": 508.69526020697975,
+      "flow_duration": 20.64737204701981,
+      "entropy": 6.852389483380625,
+      "src_port": 63966.0,
+      "dst_port": 8080.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 106,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9573429822921753,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.7704561914272965,
+      "packet_size": 157.0029966165289,
+      "byte_rate": 678.0351085440949,
+      "flow_duration": 25.559830228890625,
+      "entropy": 6.292937942609695,
+      "src_port": 55782.0,
+      "dst_port": 8443.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 107,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9911876916885376,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.3007918992485576,
+      "packet_size": 243.2006387750224,
+      "byte_rate": 367.4647398016833,
+      "flow_duration": 13.199952544701516,
+      "entropy": 5.737229877865729,
+      "src_port": 58938.0,
+      "dst_port": 1337.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 108,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9896768927574158,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.9523763022298312,
+      "packet_size": 194.8574287955481,
+      "byte_rate": 640.2218249596954,
+      "flow_duration": 17.456754409520045,
+      "entropy": 7.735623522455615,
+      "src_port": 49717.0,
+      "dst_port": 8080.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 109,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.991295576095581,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.926070083265196,
+      "packet_size": 204.2464581121337,
+      "byte_rate": 100.0,
+      "flow_duration": 49.233718797298096,
+      "entropy": 6.51834832911562,
+      "src_port": 64853.0,
+      "dst_port": 4443.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 110,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9881438612937927,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.018690850424408,
+      "packet_size": 267.8601274963904,
+      "byte_rate": 469.1116261482457,
+      "flow_duration": 36.923145736406994,
+      "entropy": 6.656070414703701,
+      "src_port": 64011.0,
+      "dst_port": 8443.0,
+      "total_packets": 8.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 111,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9468581080436707,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.6008224187727675,
+      "packet_size": 206.48741026134013,
+      "byte_rate": 376.5641707978537,
+      "flow_duration": 16.292984170270653,
+      "entropy": 5.869335100793709,
+      "src_port": 53951.0,
+      "dst_port": 8080.0,
+      "total_packets": 24.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 112,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7328387498855591,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.3416267863735882,
+      "packet_size": 277.63342222105524,
+      "byte_rate": 408.990675866516,
+      "flow_duration": 41.94828994627055,
+      "entropy": 7.107616774492216,
+      "src_port": 56822.0,
+      "dst_port": 8080.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 113,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9652091860771179,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.9420191570415324,
+      "packet_size": 173.7592745552428,
+      "byte_rate": 479.4250707747843,
+      "flow_duration": 22.963024538046568,
+      "entropy": 7.183947631579303,
+      "src_port": 64517.0,
+      "dst_port": 4443.0,
+      "total_packets": 26.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 114,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9344127178192139,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.258425770788349,
+      "packet_size": 145.14650806026745,
+      "byte_rate": 727.7007279187392,
+      "flow_duration": 36.40950608333397,
+      "entropy": 5.645982571179843,
+      "src_port": 52020.0,
+      "dst_port": 8080.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 115,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8137003183364868,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.0348890677173168,
+      "packet_size": 185.50034265275585,
+      "byte_rate": 269.1920241357906,
+      "flow_duration": 36.26013604395671,
+      "entropy": 6.448807186187291,
+      "src_port": 64655.0,
+      "dst_port": 8080.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 116,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.7694224715232849,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 100.0,
+      "byte_rate": 100.0,
+      "flow_duration": 46.649907000826985,
+      "entropy": 6.409781514690182,
+      "src_port": 58201.0,
+      "dst_port": 8080.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 117,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8282983303070068,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.337315181365006,
+      "packet_size": 245.2880876235472,
+      "byte_rate": 292.3892857776773,
+      "flow_duration": 24.62270249499545,
+      "entropy": 7.69422340827342,
+      "src_port": 58628.0,
+      "dst_port": 8080.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 118,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.710096001625061,
+    "severity": "None",
+    "features": {
+      "packet_rate": 0.5,
+      "packet_size": 148.05507293562525,
+      "byte_rate": 704.487186385632,
+      "flow_duration": 22.59770612819965,
+      "entropy": 7.221806903563948,
+      "src_port": 57928.0,
+      "dst_port": 4443.0,
+      "total_packets": 24.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 119,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9428315758705139,
+    "severity": "None",
+    "features": {
+      "packet_rate": 2.6323951789703046,
+      "packet_size": 169.1152289276865,
+      "byte_rate": 171.00173290168505,
+      "flow_duration": 5.0,
+      "entropy": 5.774610793015414,
+      "src_port": 64173.0,
+      "dst_port": 8080.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 120,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.9654812812805176,
+    "severity": "None",
+    "features": {
+      "packet_rate": 1.466955564613303,
+      "packet_size": 235.8139280810464,
+      "byte_rate": 385.6104718830247,
+      "flow_duration": 28.78226873306828,
+      "entropy": 6.1359739102253625,
+      "src_port": 53479.0,
+      "dst_port": 8080.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 121,
+    "attack_type": "Normal",
+    "predicted_class": 0,
+    "confidence": 0.8798934817314148,
+    "severity": "None",
+    "features": {
+      "packet_rate": 3.0470683163633505,
+      "packet_size": 205.95605489589457,
+      "byte_rate": 667.9154749623663,
+      "flow_duration": 37.25329831984233,
+      "entropy": 6.053502992409702,
+      "src_port": 55565.0,
+      "dst_port": 8080.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 122,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8930162787437439,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.9578517001910968,
+      "packet_size": 177.97272709599395,
+      "byte_rate": 488.3142913491292,
+      "flow_duration": 38.61973835269473,
+      "entropy": 6.685838188425462,
+      "src_port": 64427.0,
+      "dst_port": 8443.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 123,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8971379995346069,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 4.614798935361769,
+      "packet_size": 100.0,
+      "byte_rate": 725.7413441700642,
+      "flow_duration": 42.523993796287584,
+      "entropy": 7.286104440382202,
+      "src_port": 56766.0,
+      "dst_port": 4443.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 124,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9461702108383179,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.402298855688381,
+      "packet_size": 265.0404014948597,
+      "byte_rate": 100.0,
+      "flow_duration": 32.898057419983935,
+      "entropy": 6.55458701627516,
+      "src_port": 64361.0,
+      "dst_port": 8443.0,
+      "total_packets": 14.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 125,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8073166608810425,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.567069218785589,
+      "packet_size": 236.1540016738232,
+      "byte_rate": 435.6781824937968,
+      "flow_duration": 35.04781118239167,
+      "entropy": 6.7505831182189135,
+      "src_port": 50397.0,
+      "dst_port": 8443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 126,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9394158720970154,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.2269528132231573,
+      "packet_size": 302.78606648491257,
+      "byte_rate": 767.4354332709999,
+      "flow_duration": 30.681204407136143,
+      "entropy": 6.167845647828428,
+      "src_port": 57395.0,
+      "dst_port": 4443.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 127,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9673975706100464,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.8666196658011736,
+      "packet_size": 170.18100820047965,
+      "byte_rate": 274.62367077356697,
+      "flow_duration": 37.07454835552901,
+      "entropy": 6.747903849079735,
+      "src_port": 59507.0,
+      "dst_port": 8443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:06.981311"
+  },
+  {
+    "sequence_idx": 128,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9713498950004578,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.89255092724382,
+      "packet_size": 127.2774867810996,
+      "byte_rate": 706.9619686776173,
+      "flow_duration": 20.657576429000105,
+      "entropy": 6.264041082992748,
+      "src_port": 49689.0,
+      "dst_port": 8443.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:07.005373"
+  },
+  {
+    "sequence_idx": 129,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.913902997970581,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.796068329251683,
+      "packet_size": 249.7377642632212,
+      "byte_rate": 452.8619233879676,
+      "flow_duration": 15.915351690847483,
+      "entropy": 5.67962023433468,
+      "src_port": 65076.0,
+      "dst_port": 8443.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 130,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9444356560707092,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.400576771427786,
+      "packet_size": 190.59700412998245,
+      "byte_rate": 586.8258850111846,
+      "flow_duration": 21.712619905587168,
+      "entropy": 6.715435354567559,
+      "src_port": 65388.0,
+      "dst_port": 4443.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 131,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9783329367637634,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.5438297064032387,
+      "packet_size": 231.4084929534478,
+      "byte_rate": 752.9313814045081,
+      "flow_duration": 32.13623717586657,
+      "entropy": 6.495073789194193,
+      "src_port": 49692.0,
+      "dst_port": 8080.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 132,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9429906606674194,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.5326488764818644,
+      "packet_size": 280.99576436632776,
+      "byte_rate": 585.9672302096177,
+      "flow_duration": 16.995753341947527,
+      "entropy": 5.951401228407621,
+      "src_port": 62482.0,
+      "dst_port": 1337.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 133,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9080669283866882,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.6286108990845967,
+      "packet_size": 219.4076548232088,
+      "byte_rate": 381.75008812612674,
+      "flow_duration": 23.66755840395812,
+      "entropy": 7.322692662552,
+      "src_port": 49966.0,
+      "dst_port": 1337.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 134,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8774957060813904,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.6105464902572102,
+      "packet_size": 208.36494502727663,
+      "byte_rate": 612.4125504250457,
+      "flow_duration": 23.98705716964834,
+      "entropy": 6.116773005269143,
+      "src_port": 50567.0,
+      "dst_port": 4443.0,
+      "total_packets": 19.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 135,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8961636424064636,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 4.049268108036714,
+      "packet_size": 211.5001393152795,
+      "byte_rate": 367.6400309437989,
+      "flow_duration": 37.81821210965456,
+      "entropy": 6.804550657219417,
+      "src_port": 60182.0,
+      "dst_port": 1337.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:07.007381"
+  },
+  {
+    "sequence_idx": 136,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.8758947849273682,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.1225114278050403,
+      "packet_size": 118.13759070176675,
+      "byte_rate": 554.6733705570776,
+      "flow_duration": 36.60095460530379,
+      "entropy": 6.318725904724918,
+      "src_port": 50804.0,
+      "dst_port": 4443.0,
+      "total_packets": 22.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 137,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.874569296836853,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.961595664330913,
+      "packet_size": 255.40191047415237,
+      "byte_rate": 249.63140811504547,
+      "flow_duration": 30.70486092258917,
+      "entropy": 7.271788609428791,
+      "src_port": 60009.0,
+      "dst_port": 4443.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 138,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.948764979839325,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.531482897521628,
+      "packet_size": 258.6043081124581,
+      "byte_rate": 505.818934682459,
+      "flow_duration": 34.51064881637557,
+      "entropy": 6.381206043135717,
+      "src_port": 61858.0,
+      "dst_port": 1337.0,
+      "total_packets": 9.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 139,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9467335939407349,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.9346252967373614,
+      "packet_size": 226.52850124812625,
+      "byte_rate": 737.8586156577529,
+      "flow_duration": 34.707904439669704,
+      "entropy": 5.662685955694874,
+      "src_port": 53214.0,
+      "dst_port": 8443.0,
+      "total_packets": 26.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 140,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.978181779384613,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.8059540797314746,
+      "packet_size": 124.22976825345845,
+      "byte_rate": 440.2460554869883,
+      "flow_duration": 26.363804428670285,
+      "entropy": 6.905001057109548,
+      "src_port": 51508.0,
+      "dst_port": 8080.0,
+      "total_packets": 30.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 141,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9926943778991699,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.4953053102544536,
+      "packet_size": 193.9425587431493,
+      "byte_rate": 718.7380877698623,
+      "flow_duration": 24.575006936122715,
+      "entropy": 7.269771993844867,
+      "src_port": 52962.0,
+      "dst_port": 1337.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 142,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9946236610412598,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.1277345529443,
+      "packet_size": 271.92628876964267,
+      "byte_rate": 1118.685906134181,
+      "flow_duration": 45.36686415622371,
+      "entropy": 6.286194301202003,
+      "src_port": 58207.0,
+      "dst_port": 1337.0,
+      "total_packets": 21.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 143,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9938033819198608,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.1669672791078542,
+      "packet_size": 171.7123168513266,
+      "byte_rate": 494.2105370377575,
+      "flow_duration": 5.1087219519767615,
+      "entropy": 6.839442404826224,
+      "src_port": 49337.0,
+      "dst_port": 1337.0,
+      "total_packets": 15.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 144,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9973366856575012,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.202390457309134,
+      "packet_size": 259.21265259568304,
+      "byte_rate": 622.838431248397,
+      "flow_duration": 22.586966310627474,
+      "entropy": 6.56471580252439,
+      "src_port": 61700.0,
+      "dst_port": 1337.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 145,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9972643852233887,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 0.7699469725875359,
+      "packet_size": 202.75482463284268,
+      "byte_rate": 595.3725169764114,
+      "flow_duration": 27.962174785900935,
+      "entropy": 6.308642022287244,
+      "src_port": 50703.0,
+      "dst_port": 4443.0,
+      "total_packets": 20.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 146,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9981421232223511,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 3.260109532395488,
+      "packet_size": 235.62519197579803,
+      "byte_rate": 545.0207318348157,
+      "flow_duration": 35.59951427319347,
+      "entropy": 6.920380188811019,
+      "src_port": 62736.0,
+      "dst_port": 4443.0,
+      "total_packets": 16.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 147,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9967305660247803,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.1345889759377785,
+      "packet_size": 179.39292935876085,
+      "byte_rate": 657.5792048317792,
+      "flow_duration": 41.35506526103192,
+      "entropy": 6.099982005323837,
+      "src_port": 59551.0,
+      "dst_port": 8080.0,
+      "total_packets": 18.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 148,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9938030242919922,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.2777812310500587,
+      "packet_size": 204.2190440822833,
+      "byte_rate": 450.3809936254674,
+      "flow_duration": 48.56731604188147,
+      "entropy": 6.516247602393559,
+      "src_port": 56165.0,
+      "dst_port": 8080.0,
+      "total_packets": 25.0
+    },
+    "timestamp": "2025-12-01T11:42:07.008887"
+  },
+  {
+    "sequence_idx": 149,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9843228459358215,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 1.5016069122525588,
+      "packet_size": 221.8357624084439,
+      "byte_rate": 367.4911799450915,
+      "flow_duration": 29.082893171298696,
+      "entropy": 6.628678363302226,
+      "src_port": 49913.0,
+      "dst_port": 1337.0,
+      "total_packets": 17.0
+    },
+    "timestamp": "2025-12-01T11:42:07.010897"
+  },
+  {
+    "sequence_idx": 150,
+    "attack_type": "DDoS",
+    "predicted_class": 1,
+    "confidence": 0.9215635657310486,
+    "severity": "Critical",
+    "features": {
+      "packet_rate": 2.269850035508713,
+      "packet_size": 145.83830130529077,
+      "byte_rate": 194.7354457138984,
+      "flow_duration": 29.752643753101665,
+      "entropy": 6.610544685179352,
+      "src_port": 61663.0,
+      "dst_port": 1337.0,
+      "total_packets": 23.0
+    },
+    "timestamp": "2025-12-01T11:42:07.010897"
+  }
+]

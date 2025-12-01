@@ -17,6 +17,26 @@ def generate_ai_explanation(intrusion_type: str, features: Dict[str, Any], confi
     total_packets = features.get('total_packets', 0)
 
     explanations = {
+        "Attack": {
+            "description": f"Malicious network activity detected with {confidence:.1%} confidence. High packet rate ({packet_rate:.0f}/s) and anomalous traffic patterns suggest intrusion attempt.",
+            "indicators": [
+                f"Anomalous packet rate: {packet_rate:.0f} packets/sec",
+                f"Destination port: {int(dst_port)}",
+                f"Packet size: {packet_size:.0f} bytes",
+                f"Traffic entropy: {entropy:.2f}",
+                f"Total packets: {int(total_packets)}",
+                f"Byte rate: {byte_rate:.0f} bytes/sec"
+            ],
+            "mitigation": [
+                "Block source IP at firewall",
+                "Enable rate limiting",
+                "Review network logs for attack patterns",
+                "Alert security team",
+                "Consider deploying additional IDS rules"
+            ],
+            "severity": "Critical" if confidence > 0.9 else "High" if confidence > 0.7 else "Medium",
+            "attack_stage": "Active Attack"
+        },
         "DDoS": {
             "description": f"Distributed Denial of Service attack detected. Multiple sources flooding the network with {packet_rate:.0f} packets/sec to overwhelm resources.",
             "indicators": [
