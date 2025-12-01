@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen IDS - Intrusion Detection System</title>
+    <title>NextGen IDS - AI-Powered Intrusion Detection</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
     <style>
         * {
             margin: 0;
@@ -11,41 +12,81 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --critical: #dc2626;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #e2e8f0;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-card) 100%);
+            color: var(--text-primary);
             min-height: 100vh;
+            line-height: 1.5;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
             padding: 1.5rem 2rem;
-            border-bottom: 3px solid #3b82f6;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .header h1 {
-            font-size: 2rem;
+            font-size: 1.75rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-weight: 700;
         }
 
         .header .subtitle {
-            color: #94a3b8;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .header-badge {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .status-indicator {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: #10b981;
+            background: var(--success);
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px var(--success);
         }
 
         @keyframes pulse {
@@ -55,36 +96,39 @@
 
         /* Navigation Tabs */
         .tabs {
-            background: #1e293b;
-            padding: 0.75rem 2rem;
+            background: linear-gradient(180deg, #1e293b 0%, #172033 100%);
+            padding: 1rem 2rem;
             display: flex;
             gap: 0.5rem;
             overflow-x: auto;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .tab {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
             background: transparent;
             border: 1px solid transparent;
             color: #94a3b8;
             cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
             white-space: nowrap;
         }
 
         .tab:hover {
-            background: #334155;
+            background: rgba(59, 130, 246, 0.1);
             color: #e2e8f0;
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .tab.active {
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
-            border-color: #3b82f6;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         /* Container */
@@ -97,7 +141,7 @@
         /* Tab Content */
         .tab-content {
             display: none;
-            animation: fadeIn 0.3s;
+            animation: fadeIn 0.4s ease;
         }
 
         .tab-content.active {
@@ -111,12 +155,18 @@
 
         /* Cards */
         .card {
-            background: #1e293b;
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: linear-gradient(145deg, #1e293b 0%, #1a2332 100%);
+            border-radius: 16px;
+            padding: 1.75rem;
             margin-bottom: 1.5rem;
-            border: 1px solid #334155;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .card h2 {
@@ -126,6 +176,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-weight: 600;
         }
 
         .card h3 {
@@ -141,37 +192,55 @@
 
         /* Stat Cards */
         .stat-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border: 1px solid #475569;
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: linear-gradient(145deg, #1e293b 0%, #253344 100%);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            border-radius: 16px;
+            padding: 1.75rem;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
         }
 
         .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.2);
+            border-color: var(--primary);
         }
 
         .stat-card h3 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
             color: #3b82f6;
+            text-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
         }
 
         .stat-card p {
             color: #94a3b8;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            font-weight: 600;
         }
 
-        .stat-card.critical h3 { color: #ef4444; }
-        .stat-card.high h3 { color: #f59e0b; }
+        .stat-card.critical h3 { color: #ef4444; text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3); }
+        .stat-card.critical::before { background: linear-gradient(90deg, #ef4444, transparent); }
+        .stat-card.high h3 { color: #f59e0b; text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3); }
+        .stat-card.high::before { background: linear-gradient(90deg, #f59e0b, transparent); }
         .stat-card.medium h3 { color: #eab308; }
-        .stat-card.low h3 { color: #10b981; }
+        .stat-card.low h3 { color: #10b981; text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3); }
+        .stat-card.low::before { background: linear-gradient(90deg, #10b981, transparent); }
 
         /* Form Controls */
         .form-group {
@@ -188,18 +257,19 @@
 
         .form-control {
             width: 100%;
-            padding: 0.75rem;
-            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            border-radius: 10px;
             border: 1px solid #334155;
-            background: #0f172a;
+            background: rgba(15, 23, 42, 0.8);
             color: #e2e8f0;
             font-size: 0.875rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
             border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
 
         textarea.form-control {
@@ -210,77 +280,106 @@
         /* Buttons */
         .btn {
             padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            border-radius: 10px;
             border: none;
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
             cursor: pointer;
             font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s;
+            font-weight: 600;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
         }
 
         .btn:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
         }
 
-        .btn-success { background: #10b981; }
-        .btn-success:hover { background: #059669; }
-        .btn-danger { background: #ef4444; }
-        .btn-danger:hover { background: #dc2626; }
-        .btn-secondary { background: #64748b; }
-        .btn-secondary:hover { background: #475569; }
+        .btn-success { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+        .btn-success:hover { 
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+        .btn-danger { 
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+        .btn-danger:hover { 
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+        .btn-secondary { 
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            box-shadow: 0 2px 8px rgba(100, 116, 139, 0.3);
+        }
+        .btn-secondary:hover { 
+            background: linear-gradient(135deg, #475569 0%, #334155 100%);
+            box-shadow: 0 6px 20px rgba(100, 116, 139, 0.4);
+        }
 
         /* Alert Boxes */
         .alert {
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
             margin-bottom: 1rem;
             border-left: 4px solid;
+            backdrop-filter: blur(10px);
         }
 
-        .alert-info { background: #1e3a5f; border-color: #3b82f6; }
-        .alert-success { background: #1e3a2f; border-color: #10b981; }
-        .alert-warning { background: #3a2e1e; border-color: #f59e0b; }
-        .alert-danger { background: #3a1e1e; border-color: #ef4444; }
+        .alert-info { background: rgba(30, 58, 95, 0.8); border-color: #3b82f6; }
+        .alert-success { background: rgba(30, 58, 47, 0.8); border-color: #10b981; }
+        .alert-warning { background: rgba(58, 46, 30, 0.8); border-color: #f59e0b; }
+        .alert-danger { background: rgba(58, 30, 30, 0.8); border-color: #ef4444; }
 
         /* Threat Feed */
         .threat-feed {
             max-height: 500px;
             overflow-y: auto;
+            padding-right: 0.5rem;
         }
 
         .threat-item {
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 1rem;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
             margin-bottom: 0.75rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .threat-item:hover {
-            border-color: #3b82f6;
-            transform: translateX(4px);
+            border-color: var(--primary);
+            transform: translateX(6px);
+            box-shadow: -4px 0 12px rgba(59, 130, 246, 0.2);
         }
 
         .threat-info h4 {
             font-size: 0.95rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
             color: #f1f5f9;
+            font-weight: 600;
         }
 
         .threat-info p {
@@ -289,64 +388,94 @@
         }
 
         .threat-badge {
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .badge-critical { background: #ef4444; color: white; }
-        .badge-high { background: #f59e0b; color: white; }
-        .badge-medium { background: #eab308; color: #1e293b; }
-        .badge-low { background: #10b981; color: white; }
-        .badge-normal { background: #64748b; color: white; }
+        .badge-critical { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+        .badge-high { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .badge-medium { background: linear-gradient(135deg, #eab308, #ca8a04); color: #1e293b; }
+        .badge-low { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .badge-normal { background: linear-gradient(135deg, #64748b, #475569); color: white; }
 
         /* Table */
         .table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin-top: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .table th {
-            background: #334155;
-            padding: 0.75rem;
+            background: linear-gradient(135deg, #334155 0%, #3d4f65 100%);
+            padding: 1rem;
             text-align: left;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
             color: #f1f5f9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        .table th:last-child {
+            border-top-right-radius: 12px;
         }
 
         .table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #334155;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
             font-size: 0.875rem;
+            background: rgba(15, 23, 42, 0.4);
         }
 
-        .table tr:hover {
-            background: #334155;
+        .table tr:hover td {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
+
+        .table tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
         }
 
         /* Progress Bar */
         .progress {
-            background: #334155;
-            border-radius: 8px;
-            height: 24px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-radius: 12px;
+            height: 28px;
             overflow: hidden;
             margin: 1rem 0;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .progress-bar {
-            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 0.75rem;
-            font-weight: 600;
-            transition: width 0.3s;
+            font-weight: 700;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
 
         /* Chart Container */
@@ -497,11 +626,18 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <h1>
-            🛡️ NextGen IDS
-            <span class="status-indicator"></span>
-        </h1>
-        <div class="subtitle">Real-time Intrusion Detection & Prevention System | AI-Powered Security Analytics</div>
+        <div class="header-content">
+            <div>
+                <h1>
+                    🛡️ NextGen IDS
+                </h1>
+                <div class="subtitle">AI-Powered Intrusion Detection & Prevention System</div>
+            </div>
+            <div class="header-badge">
+                <span class="status-indicator"></span>
+                System Active
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -558,9 +694,13 @@
 
             <!-- Recent Threats Table -->
             <div class="card">
-                <h2>📑 Recent Threat Activity</h2>
-                <button class="btn btn-secondary" onclick="loadRecentThreats()" style="float: right;">🔄 Refresh</button>
-                <div style="clear: both;"></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>📑 Recent Threat Activity</h2>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-danger" onclick="clearAllThreats()">🗑️ Clear All</button>
+                        <button class="btn btn-secondary" onclick="loadRecentThreats()">🔄 Refresh</button>
+                    </div>
+                </div>
                 <div id="recent-threats-container"></div>
             </div>
                 <!-- IP Analysis Card -->
@@ -896,6 +1036,37 @@
         function initDashboard() {
             loadDashboardData();
             connectEventStream();
+        }
+
+        // Clear all threats from the database
+        async function clearAllThreats() {
+            if (!confirm('Are you sure you want to clear all threat data? This action cannot be undone.')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/dashboard/clear_threats', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Reset stats
+                    stats = { total: 0, critical: 0, high: 0, medium: 0, low: 0, active: 0 };
+                    updateStatCards();
+                    
+                    // Clear live feed
+                    const feed = document.getElementById('live-feed');
+                    feed.innerHTML = '<div class="empty-state"><p>No threats detected. System is monitoring...</p></div>';
+                    
+                    // Clear recent threats table
+                    document.getElementById('recent-threats-container').innerHTML = '<div class="empty-state"><p>No recent threats</p></div>';
+                    
+                    alert('All threat data has been cleared successfully.');
+                } else {
+                    alert('Failed to clear threats: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                alert('Error clearing threats: ' + error.message);
+            }
         }
 
         // Load dashboard statistics

@@ -213,5 +213,48 @@
     "details": {
       "reason": null
     }
+  },
+  {
+    "timestamp": "2025-12-01T11:58:06.883695",
+    "action": "BLOCK_IP",
+    "target": "192.168.100.50",
+    "result": "SUCCESS",
+    "dry_run": true,
+    "details": {
+      "reason": "Test",
+      "message": "[DRY RUN] Would block IP 192.168.100.50 via Windows Firewall"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T11:58:06.898937",
+    "action": "BLOCK_IP",
+    "target": "10.0.0.50",
+    "result": "SUCCESS",
+    "dry_run": true,
+    "details": {
+      "reason": "DDoS detected with 95.00% confidence",
+      "message": "[DRY RUN] Would block IP 10.0.0.50 via Windows Firewall"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T11:58:06.916976",
+    "action": "LOG_EVENT",
+    "target": "10.0.0.51",
+    "result": "LOGGED",
+    "dry_run": true,
+    "details": {
+      "threat_type": "Port_Scan",
+      "confidence": 0.45
+    }
+  },
+  {
+    "timestamp": "2025-12-01T11:58:06.946751",
+    "action": "BLOCK_IP",
+    "target": "127.0.0.1",
+    "result": "SKIPPED_WHITELIST",
+    "dry_run": true,
+    "details": {
+      "reason": null
+    }
   }
 ]
