@@ -299,5 +299,91 @@
     "details": {
       "reason": null
     }
+  },
+  {
+    "timestamp": "2025-12-01T14:04:55.638056",
+    "action": "BLOCK_IP",
+    "target": "192.168.100.50",
+    "result": "SUCCESS",
+    "dry_run": true,
+    "details": {
+      "reason": "Test",
+      "message": "[DRY RUN] Would block IP 192.168.100.50 via Windows Firewall"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T14:04:55.670242",
+    "action": "BLOCK_IP",
+    "target": "10.0.0.50",
+    "result": "SUCCESS",
+    "dry_run": true,
+    "details": {
+      "reason": "DDoS detected with 95.00% confidence",
+      "message": "[DRY RUN] Would block IP 10.0.0.50 via Windows Firewall"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T14:04:55.687101",
+    "action": "LOG_EVENT",
+    "target": "10.0.0.51",
+    "result": "LOGGED",
+    "dry_run": true,
+    "details": {
+      "threat_type": "Port_Scan",
+      "confidence": 0.45
+    }
+  },
+  {
+    "timestamp": "2025-12-01T14:04:55.715987",
+    "action": "BLOCK_IP",
+    "target": "127.0.0.1",
+    "result": "SKIPPED_WHITELIST",
+    "dry_run": true,
+    "details": {
+      "reason": null
+    }
+  },
+  {
+    "timestamp": "2025-12-01T19:38:10.485095",
+    "action": "BLOCK_IP",
+    "target": "192.168.100.50",
+    "result": "SUCCESS",
+    "dry_run": true,
+    "details": {
+      "reason": "Test",
+      "message": "[DRY RUN] Would block IP 192.168.100.50 via Windows Firewall"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T19:38:10.506834",
+    "action": "BLOCK_IP",
+    "target": "10.0.0.50",
+    "result": "SUCCESS",
+    "dry_run": true,
+    "details": {
+      "reason": "DDoS detected with 95.00% confidence",
+      "message": "[DRY RUN] Would block IP 10.0.0.50 via Windows Firewall"
+    }
+  },
+  {
+    "timestamp": "2025-12-01T19:38:10.535257",
+    "action": "LOG_EVENT",
+    "target": "10.0.0.51",
+    "result": "LOGGED",
+    "dry_run": true,
+    "details": {
+      "threat_type": "Port_Scan",
+      "confidence": 0.45
+    }
+  },
+  {
+    "timestamp": "2025-12-01T19:38:10.559207",
+    "action": "BLOCK_IP",
+    "target": "127.0.0.1",
+    "result": "SKIPPED_WHITELIST",
+    "dry_run": true,
+    "details": {
+      "reason": null
+    }
   }
 ]
